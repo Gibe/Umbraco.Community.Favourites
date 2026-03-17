@@ -1,8 +1,8 @@
 export const manifests: Array<UmbExtensionManifest> = [
   {
+    name: 'Cork Sidebar Menu',
+    alias: 'Cork.Menu',
     type: 'menu',
-    alias: 'cork.menu',
-    name: 'cork sidebar menu',
     meta: {
       label: "Favourites",
     }

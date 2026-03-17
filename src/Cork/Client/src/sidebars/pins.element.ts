@@ -6,6 +6,8 @@ import {
   state,
 } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
+import { UMB_ACTION_EVENT_CONTEXT } from "@umbraco-cms/backoffice/action";
+import { UmbRequestReloadStructureForEntityEvent } from "@umbraco-cms/backoffice/entity-action";
 import { client } from "../api/client.gen.js";
 
 interface FavouriteItem {
@@ -29,15 +31,29 @@ export class Pins extends UmbElementMixin(LitElement) {
 
   private _boundRefresh = () => this._loadFavourites();
 
+  private _actionEventContext?: typeof UMB_ACTION_EVENT_CONTEXT.TYPE;
+
   connectedCallback() {
     super.connectedCallback();
     this._loadFavourites();
     window.addEventListener("cork-favourites-updated", this._boundRefresh);
+
+    this.consumeContext(UMB_ACTION_EVENT_CONTEXT, (ctx) => {
+      this._actionEventContext = ctx;
+      ctx.addEventListener(
+        UmbRequestReloadStructureForEntityEvent.TYPE,
+        this._boundRefresh,
+      );
+    });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener("cork-favourites-updated", this._boundRefresh);
+    this._actionEventContext?.removeEventListener(
+      UmbRequestReloadStructureForEntityEvent.TYPE,
+      this._boundRefresh,
+    );
   }
 
   private async _loadFavourites() {
@@ -136,7 +152,7 @@ export class Pins extends UmbElementMixin(LitElement) {
                   label="Remove"
                   @click=${(e: Event) => this._removeFavourite(e, fav.nodeKey)}
                 >
-                  <uui-icon name="icon-trash"></uui-icon>
+                  <uui-icon name="icon-pushpin"></uui-icon>
                 </uui-button>
               </uui-action-bar>
             </uui-menu-item>

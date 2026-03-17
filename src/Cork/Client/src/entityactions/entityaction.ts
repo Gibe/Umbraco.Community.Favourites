@@ -25,12 +25,12 @@ export default class CorkFavouriteEntityAction extends UmbEntityActionBase<never
 
     if (!error) {
       this.#notificationContext?.peek("positive", {
-        data: { headline: "Added to favourites", message: "This message is a test" },
+        data: { headline: "Added to favourites", message: "" },
       });
       window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
     } else {
       this.#notificationContext?.peek("danger", {
-        data: { headline: "Failed to add favourite", message: "This message is a test" },
+        data: { headline: "Failed to add favourite", message: "" },
       });
     }
   }

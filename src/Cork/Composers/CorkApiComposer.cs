@@ -10,6 +10,8 @@ using Umbraco.Cms.Api.Management.OpenApi;
 using Umbraco.Cms.Api.Common.OpenApi;
 using Microsoft.OpenApi;
 using Cork.Repositories;
+using Cork.NotificationHandlers;
+using Umbraco.Cms.Core.Notifications;
 
 namespace Cork.Composers
 {
@@ -18,6 +20,8 @@ namespace Cork.Composers
         public void Compose(IUmbracoBuilder builder)
         {
             builder.Services.AddScoped<ICorkFavouritesRepository, CorkFavouritesRepository>();
+
+            builder.AddNotificationHandler<ContentMovedToRecycleBinNotification, ContentMovedToRecycleBinNotificationHandler>();
 
             builder.Services.AddSingleton<IOperationIdHandler, CustomOperationHandler>();
 

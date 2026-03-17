@@ -9,7 +9,12 @@ export const manifests: Array<UmbExtensionManifest> = [
     forEntityTypes: ['document'],
     meta: {
       label: "Favourite",
-      icon: 'icon-star',
+      icon: 'icon-pushpin',
     },
+    conditions: [
+      {
+        alias: "Umb.Condition.EntityIsNotTrashed",
+      },
+    ],
   },
 ];

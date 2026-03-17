@@ -8,6 +8,7 @@ public interface ICorkFavouritesRepository
     IEnumerable<CorkFavourite> GetFavourites(Guid userKey);
     void AddFavourite(Guid userKey, Guid nodeKey);
     void RemoveFavourite(Guid userKey, Guid nodeKey);
+    void RemoveFavouritesByNodeKey(Guid nodeKey);
     void UpdateSortOrder(Guid userKey, IEnumerable<Guid> nodeKeys);
 }
 
@@ -57,6 +58,15 @@ public class CorkFavouritesRepository : ICorkFavouritesRepository
         scope.Database.Execute(
             $"DELETE FROM {CorkFavourite.TableName} WHERE userKey = @0 AND nodeKey = @1",
             userKey, nodeKey);
+        scope.Complete();
+    }
+
+    public void RemoveFavouritesByNodeKey(Guid nodeKey)
+    {
+        using var scope = _scopeProvider.CreateScope();
+        scope.Database.Execute(
+            $"DELETE FROM {CorkFavourite.TableName} WHERE nodeKey = @0",
+            nodeKey);
         scope.Complete();
     }
 
