@@ -43,7 +43,7 @@ public class CorkFavouritesApiController : CorkApiControllerBase
             {
                 var content = _contentService.GetById(f.NodeKey);
                 return content != null
-                    ? new FavouriteResponse { NodeKey = f.NodeKey, NodeName = content.Name ?? "Untitled" }
+                    ? new FavouriteResponse { NodeKey = f.NodeKey, NodeName = content.Name ?? "Untitled", Published = content.Published }
                     : null;
             })
             .Where(f => f != null)
@@ -89,6 +89,7 @@ public class FavouriteResponse
 {
     public Guid NodeKey { get; set; }
     public string NodeName { get; set; } = string.Empty;
+    public bool Published { get; set; }
 }
 
 public class SortFavouritesRequest

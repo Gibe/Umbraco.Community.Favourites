@@ -13,6 +13,7 @@ import { client } from "../api/client.gen.js";
 interface FavouriteItem {
   nodeKey: string;
   nodeName: string;
+  published: boolean;
 }
 
 @customElement("cork-pins")
@@ -145,6 +146,7 @@ export class Pins extends UmbElementMixin(LitElement) {
             <uui-menu-item
               label=${fav.nodeName}
               @click-label=${() => this._navigateToNode(fav.nodeKey)}
+              class=${fav.published ? "" : "draft"}
             >
               <uui-icon slot="icon" name="icon-document"></uui-icon>
               <uui-action-bar slot="actions">
@@ -175,6 +177,10 @@ export class Pins extends UmbElementMixin(LitElement) {
 
       .sortable-item.drag-over {
         border-top: 2px solid var(--uui-color-focus);
+      }
+
+      .draft {
+          opacity: 0.6;
       }
     `,
   ];

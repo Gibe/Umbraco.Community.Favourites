@@ -82,6 +82,7 @@ let o = class extends m(h) {
             <uui-menu-item
               label=${e.nodeName}
               @click-label=${() => this._navigateToNode(e.nodeKey)}
+              class=${e.published ? "" : "draft"}
             >
               <uui-icon slot="icon" name="icon-document"></uui-icon>
               <uui-action-bar slot="actions">
@@ -113,6 +114,10 @@ o.styles = [
       .sortable-item.drag-over {
         border-top: 2px solid var(--uui-color-focus);
       }
+
+      .draft {
+          opacity: 0.6;
+      }
     `
 ];
 i([
@@ -135,4 +140,4 @@ export {
   o as Pins,
   I as default
 };
-//# sourceMappingURL=pins.element-CVUq8c3M.js.map
+//# sourceMappingURL=pins.element-BHY2AzpP.js.map
