@@ -4,7 +4,7 @@ export const manifests: Array<UmbExtensionManifest> = [
     alias: 'cork.menu.item',
     name: 'cork pin item',
     meta: {
-      label: 'Pin',
+      label: 'Favourites',
       icon: 'icon-pin',
       entityType: '',
       menus: [

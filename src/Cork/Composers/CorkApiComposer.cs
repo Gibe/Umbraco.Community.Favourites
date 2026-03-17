@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Api.Management.OpenApi;
 using Umbraco.Cms.Api.Common.OpenApi;
+using Microsoft.OpenApi;
+using Cork.Repositories;
 
 namespace Cork.Composers
 {
@@ -16,6 +17,7 @@ namespace Cork.Composers
     {
         public void Compose(IUmbracoBuilder builder)
         {
+            builder.Services.AddScoped<ICorkFavouritesRepository, CorkFavouritesRepository>();
 
             builder.Services.AddSingleton<IOperationIdHandler, CustomOperationHandler>();
 
@@ -47,6 +49,7 @@ namespace Cork.Composers
                 opt.OperationFilter<CorkOperationSecurityFilter>();
             });
         }
+
 
         public class CorkOperationSecurityFilter : BackOfficeSecurityRequirementsOperationFilterBase
         {

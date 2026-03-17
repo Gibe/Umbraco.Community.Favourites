@@ -1,11 +1,11 @@
-const n = [
+const t = [
   {
     name: "Cork Entrypoint",
     alias: "Cork.Entrypoint",
     type: "backofficeEntryPoint",
     js: () => import("./entrypoint-CkOuTyHN.js")
   }
-], a = [
+], n = [
   {
     name: "Cork Dashboard",
     alias: "Cork.Dashboard",
@@ -29,7 +29,7 @@ const n = [
     type: "sectionSidebarApp",
     kind: "menu",
     meta: {
-      label: "Pins",
+      label: "Favourites",
       menu: "cork.menu"
     },
     weight: 999999,
@@ -40,13 +40,13 @@ const n = [
       }
     ]
   }
-], t = [
+], a = [
   {
     type: "menu",
     alias: "cork.menu",
     name: "cork sidebar menu",
     meta: {
-      label: "Pins"
+      label: "Favourites"
     }
   }
 ], i = [
@@ -55,7 +55,7 @@ const n = [
     alias: "cork.menu.item",
     name: "cork pin item",
     meta: {
-      label: "Pin",
+      label: "Favourites",
       icon: "icon-pin",
       entityType: "",
       menus: [
@@ -64,13 +64,28 @@ const n = [
     }
   }
 ], o = [
-  ...n,
-  ...a,
-  ...e,
+  {
+    name: "Cork Entity Action",
+    alias: "Cork.EntityAction",
+    type: "entityAction",
+    kind: "default",
+    weight: 10,
+    api: () => import("./entityaction-QXo5g7OS.js"),
+    forEntityTypes: ["document"],
+    meta: {
+      label: "Favourite",
+      icon: "icon-star"
+    }
+  }
+], s = [
   ...t,
-  ...i
+  ...n,
+  ...e,
+  ...a,
+  ...i,
+  ...o
 ];
 export {
-  o as manifests
+  s as manifests
 };
 //# sourceMappingURL=cork.js.map

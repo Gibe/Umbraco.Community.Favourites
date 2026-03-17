@@ -5,7 +5,7 @@ export const manifests: Array<UmbExtensionManifest> = [
     type: "sectionSidebarApp",
     kind: "menu",
     meta: {
-      label: "Pins",
+      label: "Favourites",
       menu: "cork.menu",
     },
     weight: 999999,
