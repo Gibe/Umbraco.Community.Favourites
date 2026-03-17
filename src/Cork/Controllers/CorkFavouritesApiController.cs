@@ -69,6 +69,15 @@ public class CorkFavouritesApiController : CorkApiControllerBase
         _favouritesRepository.RemoveFavourite(userKey, nodeKey);
         return Ok();
     }
+
+    [HttpPut("favourites/sort")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult SortFavourites([FromBody] SortFavouritesRequest request)
+    {
+        var userKey = GetCurrentUserKey();
+        _favouritesRepository.UpdateSortOrder(userKey, request.NodeKeys);
+        return Ok();
+    }
 }
 
 public class AddFavouriteRequest
@@ -80,4 +89,9 @@ public class FavouriteResponse
 {
     public Guid NodeKey { get; set; }
     public string NodeName { get; set; } = string.Empty;
+}
+
+public class SortFavouritesRequest
+{
+    public List<Guid> NodeKeys { get; set; } = [];
 }

@@ -18,4 +18,7 @@ public class CorkFavourite
 
     [Column("nodeKey")]
     public Guid NodeKey { get; set; }
+
+    [Column("sortOrder")]
+    public int SortOrder { get; set; }
 }

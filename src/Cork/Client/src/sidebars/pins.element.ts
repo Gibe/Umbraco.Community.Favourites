@@ -6,55 +6,159 @@ import {
   state,
 } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
-import { UMB_CURRENT_USER_CONTEXT, UmbCurrentUserModel } from "@umbraco-cms/backoffice/current-user";
+import { client } from "../api/client.gen.js";
 
-@customElement("pins")
+interface FavouriteItem {
+  nodeKey: string;
+  nodeName: string;
+}
+
+@customElement("cork-pins")
 export class Pins extends UmbElementMixin(LitElement) {
   @state()
-  private _contextCurrentUser?: UmbCurrentUserModel;
+  private _favourites: FavouriteItem[] = [];
 
-  constructor() {
-    super();
+  @state()
+  private _loading = true;
 
-    this.consumeContext(UMB_CURRENT_USER_CONTEXT, (currentUserContext) => {
-      // When we have the current user context
-      // We can observe properties from it, such as the current user or perhaps just individual properties
-      // When the currentUser object changes we will get notified and can reset the @state properrty
-      this.observe(
-        currentUserContext?.currentUser,
-        (currentUser) => {
-          this._contextCurrentUser = currentUser;
-        },
-        "_contextCurrentUser"
-      );
+  @state()
+  private _dragIndex: number | null = null;
+
+  @state()
+  private _dragOverIndex: number | null = null;
+
+  private _boundRefresh = () => this._loadFavourites();
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._loadFavourites();
+    window.addEventListener("cork-favourites-updated", this._boundRefresh);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener("cork-favourites-updated", this._boundRefresh);
+  }
+
+  private async _loadFavourites() {
+    this._loading = true;
+    const { data, error } = await client.get({
+      url: "/umbraco/cork/api/v1/favourites",
+      security: [{ scheme: "bearer", type: "http" }],
+    });
+
+    if (!error && data) {
+      this._favourites = data as FavouriteItem[];
+    }
+    this._loading = false;
+  }
+
+  private _navigateToNode(nodeKey: string) {
+    window.history.pushState(
+      {},
+      "",
+      `/umbraco/section/content/workspace/document/edit/${nodeKey}`
+    );
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  }
+
+  private async _removeFavourite(e: Event, nodeKey: string) {
+    e.stopPropagation();
+    await client.delete({
+      url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
+      path: { nodeKey },
+      security: [{ scheme: "bearer", type: "http" }],
+    });
+    this._loadFavourites();
+  }
+
+  private _onDragStart(index: number, e: DragEvent) {
+    this._dragIndex = index;
+    if (e.dataTransfer) {
+      e.dataTransfer.effectAllowed = "move";
+    }
+  }
+
+  private _onDragOver(index: number, e: DragEvent) {
+    e.preventDefault();
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = "move";
+    }
+    this._dragOverIndex = index;
+  }
+
+  private _onDragEnd() {
+    if (this._dragIndex !== null && this._dragOverIndex !== null && this._dragIndex !== this._dragOverIndex) {
+      const reordered = [...this._favourites];
+      const [moved] = reordered.splice(this._dragIndex, 1);
+      reordered.splice(this._dragOverIndex, 0, moved);
+      this._favourites = reordered;
+      this._saveSortOrder();
+    }
+    this._dragIndex = null;
+    this._dragOverIndex = null;
+  }
+
+  private async _saveSortOrder() {
+    await client.put({
+      url: "/umbraco/cork/api/v1/favourites/sort",
+      body: { nodeKeys: this._favourites.map((f) => f.nodeKey) },
+      security: [{ scheme: "bearer", type: "http" }],
     });
   }
 
   render() {
+    if (this._loading) {
+      return html`<uui-loader></uui-loader>`;
+    }
+
+    if (this._favourites.length === 0) {
+      return html`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>`;
+    }
+
     return html`
-      <h2>Hello ${this._contextCurrentUser?.name || "there"}!</h2>
+      ${this._favourites.map(
+        (fav, index) => html`
+          <div
+            class="sortable-item ${this._dragOverIndex === index ? "drag-over" : ""}"
+            draggable="true"
+            @dragstart=${(e: DragEvent) => this._onDragStart(index, e)}
+            @dragover=${(e: DragEvent) => this._onDragOver(index, e)}
+            @dragend=${() => this._onDragEnd()}
+          >
+            <uui-menu-item
+              label=${fav.nodeName}
+              @click-label=${() => this._navigateToNode(fav.nodeKey)}
+            >
+              <uui-icon slot="icon" name="icon-document"></uui-icon>
+              <uui-action-bar slot="actions">
+                <uui-button
+                  label="Remove"
+                  @click=${(e: Event) => this._removeFavourite(e, fav.nodeKey)}
+                >
+                  <uui-icon name="icon-trash"></uui-icon>
+                </uui-button>
+              </uui-action-bar>
+            </uui-menu-item>
+          </div>
+        `
+      )}
     `;
   }
 
   static styles = [
     css`
       :host {
-        display: grid;
-        gap: var(--uui-size-layout-1);
-        padding: var(--uui-size-layout-1);
-        grid-template-columns: 1fr 1fr 1fr;
+        display: contents;
       }
 
-      uui-box {
-        margin-bottom: var(--uui-size-layout-1);
+      .sortable-item {
+        cursor: grab;
+        transition: opacity 120ms ease;
       }
 
-      h2 {
-        margin-top: 0;
-      }
-
-      .wide {
-        grid-column: span 3;
+      .sortable-item.drag-over {
+        border-top: 2px solid var(--uui-color-focus);
       }
     `,
   ];
@@ -64,6 +168,6 @@ export default Pins;
 
 declare global {
   interface HTMLElementTagNameMap {
-    "pins": Pins;
+    "cork-pins": Pins;
   }
 }

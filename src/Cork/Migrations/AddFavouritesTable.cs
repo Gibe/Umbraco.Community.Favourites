@@ -3,11 +3,11 @@ using Umbraco.Cms.Infrastructure.Migrations;
 
 namespace Cork.Migrations;
 
-public class AddFavouritesTable : MigrationBase
+public class AddFavouritesTable : AsyncMigrationBase
 {
     public AddFavouritesTable(IMigrationContext context) : base(context) { }
 
-    protected override void Migrate()
+    protected override async Task MigrateAsync()
     {
         if (!TableExists(CorkFavourite.TableName))
         {

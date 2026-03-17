@@ -9,5 +9,6 @@ public class CorkMigrationPlan : PackageMigrationPlan
     protected override void DefinePlan()
     {
         To<AddFavouritesTable>("cork-favourites-001");
+        To<AddSortOrderToFavourites>("cork-favourites-002");
     }
 }

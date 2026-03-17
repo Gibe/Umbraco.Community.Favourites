@@ -8,6 +8,7 @@ public interface ICorkFavouritesRepository
     IEnumerable<CorkFavourite> GetFavourites(Guid userKey);
     void AddFavourite(Guid userKey, Guid nodeKey);
     void RemoveFavourite(Guid userKey, Guid nodeKey);
+    void UpdateSortOrder(Guid userKey, IEnumerable<Guid> nodeKeys);
 }
 
 public class CorkFavouritesRepository : ICorkFavouritesRepository
@@ -23,7 +24,7 @@ public class CorkFavouritesRepository : ICorkFavouritesRepository
     {
         using var scope = _scopeProvider.CreateScope();
         var results = scope.Database.Fetch<CorkFavourite>(
-            "WHERE userKey = @0", userKey);
+            "WHERE userKey = @0 ORDER BY sortOrder", userKey);
         scope.Complete();
         return results;
     }
@@ -36,10 +37,14 @@ public class CorkFavouritesRepository : ICorkFavouritesRepository
 
         if (existing == null)
         {
+            var maxSortOrder = scope.Database.ExecuteScalar<int>(
+                $"SELECT COALESCE(MAX(sortOrder), -1) FROM {CorkFavourite.TableName} WHERE userKey = @0", userKey);
+
             scope.Database.Insert(new CorkFavourite
             {
                 UserKey = userKey,
                 NodeKey = nodeKey,
+                SortOrder = maxSortOrder + 1,
             });
         }
 
@@ -52,6 +57,20 @@ public class CorkFavouritesRepository : ICorkFavouritesRepository
         scope.Database.Execute(
             $"DELETE FROM {CorkFavourite.TableName} WHERE userKey = @0 AND nodeKey = @1",
             userKey, nodeKey);
+        scope.Complete();
+    }
+
+    public void UpdateSortOrder(Guid userKey, IEnumerable<Guid> nodeKeys)
+    {
+        using var scope = _scopeProvider.CreateScope();
+        var sortOrder = 0;
+        foreach (var nodeKey in nodeKeys)
+        {
+            scope.Database.Execute(
+                $"UPDATE {CorkFavourite.TableName} SET sortOrder = @0 WHERE userKey = @1 AND nodeKey = @2",
+                sortOrder, userKey, nodeKey);
+            sortOrder++;
+        }
         scope.Complete();
     }
 }

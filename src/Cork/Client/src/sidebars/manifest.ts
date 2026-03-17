@@ -3,7 +3,7 @@ export const manifests: Array<UmbExtensionManifest> = [
     name: "cork",
     alias: "cork.sidebar.app",
     type: "sectionSidebarApp",
-    kind: "menu",
+    kind: "menuWithEntityActions",
     meta: {
       label: "Favourites",
       menu: "cork.menu",

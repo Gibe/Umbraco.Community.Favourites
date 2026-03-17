@@ -27,7 +27,7 @@ const t = [
     name: "cork",
     alias: "cork.sidebar.app",
     type: "sectionSidebarApp",
-    kind: "menu",
+    kind: "menuWithEntityActions",
     meta: {
       label: "Favourites",
       menu: "cork.menu"
@@ -54,6 +54,7 @@ const t = [
     type: "menuItem",
     alias: "cork.menu.item",
     name: "cork pin item",
+    element: () => import("./pins.element-7Fi_gYL_.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
