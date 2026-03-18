@@ -1,12 +1,12 @@
 export const manifests: Array<UmbExtensionManifest> = [
   {
-    name: "cork",
-    alias: "cork.sidebar.app",
+    name: "Cork Sidebar App",
+    alias: "Cork.Sidebar.App",
     type: "sectionSidebarApp",
-    kind: "menu",
+    kind: "menuWithEntityActions",
     meta: {
-      label: "Pins",
-      menu: "cork.menu",
+      label: "Favourites",
+      menu: "Cork.Menu",
     },
     weight: 999999,
     conditions: [

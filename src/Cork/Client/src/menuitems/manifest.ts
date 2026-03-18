@@ -1,14 +1,15 @@
 export const manifests: Array<UmbExtensionManifest> = [
   {
+    name: 'Cork Menu Item',
+    alias: 'Cork.Menu.Item',
     type: 'menuItem',
-    alias: 'cork.menu.item',
-    name: 'cork pin item',
+    element: () => import('../sidebars/pins.element.js'),
     meta: {
-      label: 'Pin',
+      label: 'Favourites',
       icon: 'icon-pin',
       entityType: '',
       menus: [
-        'cork.menu'
+        'Cork.Menu'
       ]
     }
   },

@@ -1,36 +1,19 @@
-const n = [
+const t = [
   {
     name: "Cork Entrypoint",
     alias: "Cork.Entrypoint",
     type: "backofficeEntryPoint",
-    js: () => import("./entrypoint-CkOuTyHN.js")
+    js: () => import("./entrypoint-D09Tm1TN.js")
   }
-], a = [
+], n = [
   {
-    name: "Cork Dashboard",
-    alias: "Cork.Dashboard",
-    type: "dashboard",
-    js: () => import("./dashboard.element-CrG1ZR8b.js"),
-    meta: {
-      label: "Example Dashboard",
-      pathname: "example-dashboard"
-    },
-    conditions: [
-      {
-        alias: "Umb.Condition.SectionAlias",
-        match: "Umb.Section.Content"
-      }
-    ]
-  }
-], e = [
-  {
-    name: "cork",
-    alias: "cork.sidebar.app",
+    name: "Cork Sidebar App",
+    alias: "Cork.Sidebar.App",
     type: "sectionSidebarApp",
-    kind: "menu",
+    kind: "menuWithEntityActions",
     meta: {
-      label: "Pins",
-      menu: "cork.menu"
+      label: "Favourites",
+      menu: "Cork.Menu"
     },
     weight: 999999,
     conditions: [
@@ -40,37 +23,57 @@ const n = [
       }
     ]
   }
-], t = [
+], e = [
   {
+    name: "Cork Sidebar Menu",
+    alias: "Cork.Menu",
     type: "menu",
-    alias: "cork.menu",
-    name: "cork sidebar menu",
     meta: {
-      label: "Pins"
+      label: "Favourites"
     }
   }
 ], i = [
   {
+    name: "Cork Menu Item",
+    alias: "Cork.Menu.Item",
     type: "menuItem",
-    alias: "cork.menu.item",
-    name: "cork pin item",
+    element: () => import("./pins.element-BHY2AzpP.js"),
     meta: {
-      label: "Pin",
+      label: "Favourites",
       icon: "icon-pin",
       entityType: "",
       menus: [
-        "cork.menu"
+        "Cork.Menu"
       ]
     }
   }
 ], o = [
-  ...n,
-  ...a,
-  ...e,
+  {
+    name: "Cork Entity Action",
+    alias: "Cork.EntityAction",
+    type: "entityAction",
+    kind: "default",
+    weight: 10,
+    api: () => import("./entityaction-D8oaJ4nN.js"),
+    forEntityTypes: ["document"],
+    meta: {
+      label: "Favourite",
+      icon: "icon-pushpin"
+    },
+    conditions: [
+      {
+        alias: "Umb.Condition.EntityIsNotTrashed"
+      }
+    ]
+  }
+], a = [
   ...t,
-  ...i
+  ...n,
+  ...e,
+  ...i,
+  ...o
 ];
 export {
-  o as manifests
+  a as manifests
 };
 //# sourceMappingURL=cork.js.map

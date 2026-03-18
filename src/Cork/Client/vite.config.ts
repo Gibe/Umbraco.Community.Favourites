@@ -5,7 +5,7 @@ export default defineConfig({
     lib: {
       entry: "src/bundle.manifests.ts", // Bundle registers one or more manifests
       formats: ["es"],
-      fileName: "cork",
+      fileName: "Cork",
     },
     outDir: "../wwwroot/App_Plugins/Cork", // your web component will be saved in this location
     emptyOutDir: true,
