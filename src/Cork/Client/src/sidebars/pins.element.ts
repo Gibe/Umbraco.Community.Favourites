@@ -8,6 +8,7 @@ import {
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent } from "@umbraco-cms/backoffice/entity-action";
+import { UMB_NOTIFICATION_CONTEXT } from "@umbraco-cms/backoffice/notification";
 import { client } from "../api/client.gen.js";
 
 interface FavouriteItem {
@@ -33,6 +34,7 @@ export class Pins extends UmbElementMixin(LitElement) {
   private _boundRefresh = () => this._loadFavourites();
 
   private _actionEventContext?: typeof UMB_ACTION_EVENT_CONTEXT.TYPE;
+  private _notificationContext?: typeof UMB_NOTIFICATION_CONTEXT.TYPE;
 
   connectedCallback() {
     super.connectedCallback();
@@ -41,10 +43,16 @@ export class Pins extends UmbElementMixin(LitElement) {
 
     this.consumeContext(UMB_ACTION_EVENT_CONTEXT, (ctx) => {
       this._actionEventContext = ctx;
-      ctx?.addEventListener(
-        UmbRequestReloadStructureForEntityEvent.TYPE,
-        this._boundRefresh,
-      );
+      if (ctx) {
+        ctx.addEventListener(
+          UmbRequestReloadStructureForEntityEvent.TYPE,
+          this._boundRefresh,
+        );
+      }
+    });
+
+    this.consumeContext(UMB_NOTIFICATION_CONTEXT, (ctx) => {
+      this._notificationContext = ctx;
     });
   }
 
@@ -81,12 +89,24 @@ export class Pins extends UmbElementMixin(LitElement) {
 
   private async _removeFavourite(e: Event, nodeKey: string) {
     e.stopPropagation();
-    await client.delete({
+    const { error } = await client.delete({
       url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
       path: { nodeKey },
       security: [{ scheme: "bearer", type: "http" }],
     });
+
+    if (!error) {
+      this._notificationContext?.peek("positive", {
+        data: { headline: "Removed from favourites", message: "" },
+      });
+    } else {
+      this._notificationContext?.peek("danger", {
+        data: { headline: "Failed to remove favourite", message: "" },
+      });
+    }
+
     this._loadFavourites();
+    window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
   }
 
   private _onDragStart(index: number, e: DragEvent) {
@@ -126,11 +146,7 @@ export class Pins extends UmbElementMixin(LitElement) {
 
   render() {
     if (this._loading) {
-      return html`<uui-loader></uui-loader>`;
-    }
-
-    if (this._favourites.length === 0) {
-      return html`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>`;
+      return html``;
     }
 
     return html`
@@ -154,7 +170,7 @@ export class Pins extends UmbElementMixin(LitElement) {
                   label="Remove"
                   @click=${(e: Event) => this._removeFavourite(e, fav.nodeKey)}
                 >
-                  <uui-icon name="icon-pushpin"></uui-icon>
+                  <uui-icon name="icon-delete"></uui-icon>
                 </uui-button>
               </uui-action-bar>
             </uui-menu-item>

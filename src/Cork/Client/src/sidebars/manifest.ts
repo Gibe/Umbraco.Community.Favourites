@@ -5,14 +5,17 @@ export const manifests: Array<UmbExtensionManifest> = [
     type: "sectionSidebarApp",
     kind: "menuWithEntityActions",
     meta: {
-      label: "Favourites",
       menu: "Cork.Menu",
     },
+    element: () => import('./sidebar.element'),
     weight: 999999,
     conditions: [
       {
         alias: "Umb.Condition.SectionAlias",
         match: "Umb.Section.Content",
+      },
+      {
+        alias: "Cork.Condition.HasFavourites",
       },
     ],
   },
