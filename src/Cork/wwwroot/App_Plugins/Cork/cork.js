@@ -37,7 +37,7 @@ const t = [
     name: "Cork Menu Item",
     alias: "Cork.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-BHY2AzpP.js"),
+    element: () => import("./pins.element-BYr4WEMg.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
@@ -76,4 +76,4 @@ const t = [
 export {
   a as manifests
 };
-//# sourceMappingURL=cork.js.map
+//# sourceMappingURL=Cork.js.map

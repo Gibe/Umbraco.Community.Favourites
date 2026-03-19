@@ -2,10 +2,10 @@ import { LitElement as h, html as n, css as _, state as d, customElement as p } 
 import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
-import { c as l } from "./client.gen-Ce7o8kG8.js";
+import { c } from "./client.gen-Ce7o8kG8.js";
 var g = Object.defineProperty, b = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
-  for (var a = s > 1 ? void 0 : s ? b(t, r) : t, u = e.length - 1, c; u >= 0; u--)
-    (c = e[u]) && (a = (s ? c(t, r, a) : c(a)) || a);
+  for (var a = s > 1 ? void 0 : s ? b(t, r) : t, u = e.length - 1, l; u >= 0; u--)
+    (l = e[u]) && (a = (s ? l(t, r, a) : l(a)) || a);
   return s && a && g(t, r, a), a;
 };
 let o = class extends m(h) {
@@ -14,7 +14,7 @@ let o = class extends m(h) {
   }
   connectedCallback() {
     super.connectedCallback(), this._loadFavourites(), window.addEventListener("cork-favourites-updated", this._boundRefresh), this.consumeContext(f, (e) => {
-      this._actionEventContext = e, e.addEventListener(
+      this._actionEventContext = e, e && e.addEventListener(
         v.TYPE,
         this._boundRefresh
       );
@@ -28,7 +28,7 @@ let o = class extends m(h) {
   }
   async _loadFavourites() {
     this._loading = !0;
-    const { data: e, error: t } = await l.get({
+    const { data: e, error: t } = await c.get({
       url: "/umbraco/cork/api/v1/favourites",
       security: [{ scheme: "bearer", type: "http" }]
     });
@@ -42,7 +42,7 @@ let o = class extends m(h) {
     ), window.dispatchEvent(new PopStateEvent("popstate"));
   }
   async _removeFavourite(e, t) {
-    e.stopPropagation(), await l.delete({
+    e.stopPropagation(), await c.delete({
       url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
       path: { nodeKey: t },
       security: [{ scheme: "bearer", type: "http" }]
@@ -62,7 +62,7 @@ let o = class extends m(h) {
     this._dragIndex = null, this._dragOverIndex = null;
   }
   async _saveSortOrder() {
-    await l.put({
+    await c.put({
       url: "/umbraco/cork/api/v1/favourites/sort",
       body: { nodeKeys: this._favourites.map((e) => e.nodeKey) },
       security: [{ scheme: "bearer", type: "http" }]
@@ -90,7 +90,7 @@ let o = class extends m(h) {
                   label="Remove"
                   @click=${(r) => this._removeFavourite(r, e.nodeKey)}
                 >
-                  <uui-icon name="icon-pushpin"></uui-icon>
+                  <uui-icon name="icon-delete"></uui-icon>
                 </uui-button>
               </uui-action-bar>
             </uui-menu-item>
@@ -140,4 +140,4 @@ export {
   o as Pins,
   I as default
 };
-//# sourceMappingURL=pins.element-BHY2AzpP.js.map
+//# sourceMappingURL=pins.element-BYr4WEMg.js.map

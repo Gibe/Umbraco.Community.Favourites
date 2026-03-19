@@ -41,10 +41,12 @@ export class Pins extends UmbElementMixin(LitElement) {
 
     this.consumeContext(UMB_ACTION_EVENT_CONTEXT, (ctx) => {
       this._actionEventContext = ctx;
-      ctx.addEventListener(
-        UmbRequestReloadStructureForEntityEvent.TYPE,
-        this._boundRefresh,
-      );
+      if (ctx) {
+        ctx.addEventListener(
+          UmbRequestReloadStructureForEntityEvent.TYPE,
+          this._boundRefresh,
+        );
+      }
     });
   }
 
@@ -154,7 +156,7 @@ export class Pins extends UmbElementMixin(LitElement) {
                   label="Remove"
                   @click=${(e: Event) => this._removeFavourite(e, fav.nodeKey)}
                 >
-                  <uui-icon name="icon-pushpin"></uui-icon>
+                  <uui-icon name="icon-delete"></uui-icon>
                 </uui-button>
               </uui-action-bar>
             </uui-menu-item>
