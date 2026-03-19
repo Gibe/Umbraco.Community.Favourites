@@ -10,6 +10,59 @@ interface FavouriteItem {
   published: boolean;
 }
 
+// Shared helpers for favourites API operations. These can be reused by other
+// workspace-related code (e.g. actions) to avoid duplicating logic.
+async function fetchFavourites(): Promise<FavouriteItem[]> {
+  const { data } = await client.get({
+    url: "/umbraco/cork/api/v1/favourites",
+    security: [{ scheme: "bearer", type: "http" }],
+  });
+
+  return (data as FavouriteItem[]) ?? [];
+}
+
+async function updateFavouriteOnServer(options: {
+  nodeKey: string;
+  currentlyPinned: boolean;
+  notificationContext?: typeof UMB_NOTIFICATION_CONTEXT.TYPE;
+}): Promise<boolean> {
+  const { nodeKey, currentlyPinned, notificationContext } = options;
+
+  if (currentlyPinned) {
+    const { error } = await client.delete({
+      url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
+      path: { nodeKey },
+      security: [{ scheme: "bearer", type: "http" }],
+    });
+
+    if (!error) {
+      notificationContext?.peek("positive", {
+        data: { headline: "Removed from favourites", message: "" },
+      });
+      window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
+      return true;
+    }
+
+    return false;
+  }
+
+  const { error } = await client.post({
+    url: "/umbraco/cork/api/v1/favourites",
+    body: { nodeKey },
+    security: [{ scheme: "bearer", type: "http" }],
+  });
+
+  if (!error) {
+    notificationContext?.peek("positive", {
+      data: { headline: "Added to favourites", message: "" },
+    });
+    window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
+    return true;
+  }
+
+  return false;
+}
+
 @customElement("cork-pin-workspace-action")
 export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitElement) {
   @state()
@@ -20,6 +73,7 @@ export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitEl
 
   #workspaceContext?: typeof UMB_DOCUMENT_WORKSPACE_CONTEXT.TYPE;
   #notificationContext?: typeof UMB_NOTIFICATION_CONTEXT.TYPE;
+  #onFavouritesUpdated = () => this.#checkPinStatus();
 
   constructor() {
     super();
@@ -28,9 +82,20 @@ export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitEl
       this.#workspaceContext = ctx;
       this.#checkPinStatus();
     });
+  }
 
-    // Listen to the custom event triggered by workspaceaction.action.ts on success
-    window.addEventListener("cork-favourites-updated", () => this.#checkPinStatus());
+    this.consumeContext(UMB_NOTIFICATION_CONTEXT, (ctx) => {
+      this.#notificationContext = ctx;
+    });
+
+  connectedCallback() {
+    super.connectedCallback?.();
+    window.addEventListener("cork-favourites-updated", this.#onFavouritesUpdated);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("cork-favourites-updated", this.#onFavouritesUpdated);
+    super.disconnectedCallback?.();
   }
 
   async #checkPinStatus() {
@@ -40,12 +105,7 @@ export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitEl
       return;
     }
 
-    const { data } = await client.get({
-      url: "/umbraco/cork/api/v1/favourites",
-      security: [{ scheme: "bearer", type: "http" }],
-    });
-
-    const favourites = (data as FavouriteItem[]) ?? [];
+    const favourites = await fetchFavourites();
     this._isPinned = favourites.some((f) => f.nodeKey === unique);
     this._loading = false;
   }
@@ -63,33 +123,17 @@ export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitEl
 
     this._loading = true;
 
-    if (this._isPinned) {
-      const { error } = await client.delete({
-        url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
-        path: { nodeKey: unique },
-        security: [{ scheme: "bearer", type: "http" }],
-      });
+    const success = await updateFavouriteOnServer({
+      nodeKey: unique,
+      currentlyPinned: this._isPinned,
+      notificationContext: this.#notificationContext,
+    });
 
-      if (!error) {
-        this.#notificationContext?.peek("positive", {
-          data: { headline: "Removed from favourites", message: "" },
-        });
-        window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
-      }
-    } else {
-      const { error } = await client.post({
-        url: "/umbraco/cork/api/v1/favourites",
-        body: { nodeKey: unique },
-        security: [{ scheme: "bearer", type: "http" }],
-      });
-
-      if (!error) {
-        this.#notificationContext?.peek("positive", {
-          data: { headline: "Added to favourites", message: "" },
-        });
-        window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
-      }
+    if (success) {
+      this._isPinned = !this._isPinned;
     }
+
+    this._loading = false;
   }
 
   render() {
