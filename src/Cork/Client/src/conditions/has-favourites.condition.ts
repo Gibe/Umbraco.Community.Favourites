@@ -6,8 +6,7 @@ import type {
 } from "@umbraco-cms/backoffice/extension-api";
 import type { UmbControllerHost } from "@umbraco-cms/backoffice/controller-api";
 import { client } from "../api/client.gen.js";
-
-export const HAS_FAVOURITES_CONDITION_ALIAS = "Cork.Condition.HasFavourites";
+import { HAS_FAVOURITES_CONDITION_ALIAS } from "./constants.js";
 
 export type HasFavouritesConditionConfig = UmbConditionConfigBase<typeof HAS_FAVOURITES_CONDITION_ALIAS>;
 

@@ -2,7 +2,7 @@ import { LitElement as h, html as c, css as p, state as n, customElement as _ } 
 import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
-import { c as l } from "./bundle.manifests-6hy1jyEL.js";
+import { c as l } from "./client.gen-Ce7o8kG8.js";
 var g = Object.defineProperty, b = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
   for (var a = s > 1 ? void 0 : s ? b(t, r) : t, d = e.length - 1, u; d >= 0; d--)
     (u = e[d]) && (a = (s ? u(t, r, a) : u(a)) || a);
@@ -140,4 +140,4 @@ export {
   o as Pins,
   I as default
 };
-//# sourceMappingURL=pins.element-D6ADWXfs.js.map
+//# sourceMappingURL=pins.element-C12UHFFQ.js.map

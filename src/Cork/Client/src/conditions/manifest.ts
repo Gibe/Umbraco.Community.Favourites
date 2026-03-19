@@ -1,4 +1,4 @@
-import { HAS_FAVOURITES_CONDITION_ALIAS } from "./has-favourites.condition.js";
+import { HAS_FAVOURITES_CONDITION_ALIAS } from "./constants.js";
 
 export const manifests: Array<UmbExtensionManifest> = [
   {
