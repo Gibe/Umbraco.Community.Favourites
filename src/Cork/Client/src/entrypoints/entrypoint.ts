@@ -1,4 +1,4 @@
-import type {
+  import type {
   UmbEntryPointOnInit,
   UmbEntryPointOnUnload,
 } from "@umbraco-cms/backoffice/extension-api";
