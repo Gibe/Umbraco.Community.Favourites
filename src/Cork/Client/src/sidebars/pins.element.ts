@@ -41,10 +41,12 @@ export class Pins extends UmbElementMixin(LitElement) {
 
     this.consumeContext(UMB_ACTION_EVENT_CONTEXT, (ctx) => {
       this._actionEventContext = ctx;
-      ctx.addEventListener(
-        UmbRequestReloadStructureForEntityEvent.TYPE,
-        this._boundRefresh,
-      );
+      if (ctx) {
+        ctx.addEventListener(
+          UmbRequestReloadStructureForEntityEvent.TYPE,
+          this._boundRefresh,
+        );
+      }
     });
   }
 
