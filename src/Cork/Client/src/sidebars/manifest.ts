@@ -5,9 +5,9 @@ export const manifests: Array<UmbExtensionManifest> = [
     type: "sectionSidebarApp",
     kind: "menuWithEntityActions",
     meta: {
-      label: "Favourites",
       menu: "Cork.Menu",
     },
+    element: () => import('./sidebar.element'),
     weight: 999999,
     conditions: [
       {

@@ -6,5 +6,5 @@ export const manifests: Array<UmbExtensionManifest> = [
     meta: {
       label: "Favourites",
     }
-  },
+  }
 ];

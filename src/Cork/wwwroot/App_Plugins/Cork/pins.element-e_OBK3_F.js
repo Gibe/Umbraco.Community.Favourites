@@ -14,7 +14,7 @@ let o = class extends m(h) {
   }
   connectedCallback() {
     super.connectedCallback(), this._loadFavourites(), window.addEventListener("cork-favourites-updated", this._boundRefresh), this.consumeContext(f, (e) => {
-      this._actionEventContext = e, e.addEventListener(
+      this._actionEventContext = e, e?.addEventListener(
         v.TYPE,
         this._boundRefresh
       );
@@ -140,4 +140,4 @@ export {
   o as Pins,
   I as default
 };
-//# sourceMappingURL=pins.element-BHY2AzpP.js.map
+//# sourceMappingURL=pins.element-e_OBK3_F.js.map

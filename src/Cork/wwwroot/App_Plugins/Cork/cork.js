@@ -12,9 +12,9 @@ const t = [
     type: "sectionSidebarApp",
     kind: "menuWithEntityActions",
     meta: {
-      label: "Favourites",
       menu: "Cork.Menu"
     },
+    element: () => import("./sidebar.element-BMuOZKm2.js"),
     weight: 999999,
     conditions: [
       {
@@ -37,7 +37,7 @@ const t = [
     name: "Cork Menu Item",
     alias: "Cork.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-BHY2AzpP.js"),
+    element: () => import("./pins.element-e_OBK3_F.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
@@ -76,4 +76,4 @@ const t = [
 export {
   a as manifests
 };
-//# sourceMappingURL=cork.js.map
+//# sourceMappingURL=Cork.js.map
