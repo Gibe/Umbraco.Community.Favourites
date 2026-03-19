@@ -1,4 +1,8 @@
-import { HAS_FAVOURITES_CONDITION_ALIAS } from "./constants.js";
+import {
+  HAS_FAVOURITES_CONDITION_ALIAS,
+  IS_FAVOURITED_CONDITION_ALIAS,
+  IS_NOT_FAVOURITED_CONDITION_ALIAS,
+} from "./constants.js";
 
 export const manifests: Array<UmbExtensionManifest> = [
   {
@@ -6,5 +10,17 @@ export const manifests: Array<UmbExtensionManifest> = [
     alias: HAS_FAVOURITES_CONDITION_ALIAS,
     type: "condition",
     api: () => import("./has-favourites.condition.js"),
+  },
+  {
+    name: "Cork Is Favourited Condition",
+    alias: IS_FAVOURITED_CONDITION_ALIAS,
+    type: "condition",
+    api: () => import("./is-favourited.condition.js"),
+  },
+  {
+    name: "Cork Is Not Favourited Condition",
+    alias: IS_NOT_FAVOURITED_CONDITION_ALIAS,
+    type: "condition",
+    api: () => import("./is-not-favourited.condition.js"),
   },
 ];

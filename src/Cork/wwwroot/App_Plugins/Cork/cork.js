@@ -1,11 +1,11 @@
-const t = [
+const i = [
   {
     name: "Cork Entrypoint",
     alias: "Cork.Entrypoint",
     type: "backofficeEntryPoint",
     js: () => import("./entrypoint-D09Tm1TN.js")
   }
-], n = [
+], t = [
   {
     name: "Cork Sidebar App",
     alias: "Cork.Sidebar.App",
@@ -26,7 +26,7 @@ const t = [
       }
     ]
   }
-], i = [
+], o = [
   {
     name: "Cork Sidebar Menu",
     alias: "Cork.Menu",
@@ -35,12 +35,12 @@ const t = [
       label: "Favourites"
     }
   }
-], e = [
+], n = [
   {
     name: "Cork Menu Item",
     alias: "Cork.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-Igf9Y3ny.js"),
+    element: () => import("./pins.element-BxWpjMu3.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
@@ -50,10 +50,10 @@ const t = [
       ]
     }
   }
-], o = [
+], e = [
   {
-    name: "Cork Entity Action",
-    alias: "Cork.EntityAction",
+    name: "Cork Favourite Entity Action",
+    alias: "Cork.EntityAction.Favourite",
     type: "entityAction",
     kind: "default",
     weight: 10,
@@ -66,25 +66,61 @@ const t = [
     conditions: [
       {
         alias: "Umb.Condition.EntityIsNotTrashed"
+      },
+      {
+        alias: "Cork.Condition.IsNotFavourited"
+      }
+    ]
+  },
+  {
+    name: "Cork Unfavourite Entity Action",
+    alias: "Cork.EntityAction.Unfavourite",
+    type: "entityAction",
+    kind: "default",
+    weight: 10,
+    api: () => import("./unfavourite-entityaction-DacQ2opT.js"),
+    forEntityTypes: ["document"],
+    meta: {
+      label: "Unfavourite",
+      icon: "icon-pushpin"
+    },
+    conditions: [
+      {
+        alias: "Umb.Condition.EntityIsNotTrashed"
+      },
+      {
+        alias: "Cork.Condition.IsFavourited"
       }
     ]
   }
-], a = "Cork.Condition.HasFavourites", s = [
+], a = "Cork.Condition.HasFavourites", s = "Cork.Condition.IsFavourited", r = "Cork.Condition.IsNotFavourited", m = [
   {
     name: "Cork Has Favourites Condition",
     alias: a,
     type: "condition",
     api: () => import("./has-favourites.condition-Jw3ov3l5.js")
+  },
+  {
+    name: "Cork Is Favourited Condition",
+    alias: s,
+    type: "condition",
+    api: () => import("./is-favourited.condition-XHws4fJf.js")
+  },
+  {
+    name: "Cork Is Not Favourited Condition",
+    alias: r,
+    type: "condition",
+    api: () => import("./is-not-favourited.condition-BFcs-_RG.js")
   }
-], r = [
-  ...t,
-  ...n,
+], C = [
   ...i,
-  ...e,
+  ...t,
   ...o,
-  ...s
+  ...n,
+  ...e,
+  ...m
 ];
 export {
-  r as manifests
+  C as manifests
 };
 //# sourceMappingURL=Cork.js.map

@@ -8,6 +8,7 @@ import {
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent } from "@umbraco-cms/backoffice/entity-action";
+import { UMB_NOTIFICATION_CONTEXT } from "@umbraco-cms/backoffice/notification";
 import { client } from "../api/client.gen.js";
 
 interface FavouriteItem {
@@ -33,6 +34,7 @@ export class Pins extends UmbElementMixin(LitElement) {
   private _boundRefresh = () => this._loadFavourites();
 
   private _actionEventContext?: typeof UMB_ACTION_EVENT_CONTEXT.TYPE;
+  private _notificationContext?: typeof UMB_NOTIFICATION_CONTEXT.TYPE;
 
   connectedCallback() {
     super.connectedCallback();
@@ -47,6 +49,10 @@ export class Pins extends UmbElementMixin(LitElement) {
           this._boundRefresh,
         );
       }
+    });
+
+    this.consumeContext(UMB_NOTIFICATION_CONTEXT, (ctx) => {
+      this._notificationContext = ctx;
     });
   }
 
@@ -83,11 +89,22 @@ export class Pins extends UmbElementMixin(LitElement) {
 
   private async _removeFavourite(e: Event, nodeKey: string) {
     e.stopPropagation();
-    await client.delete({
+    const { error } = await client.delete({
       url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
       path: { nodeKey },
       security: [{ scheme: "bearer", type: "http" }],
     });
+
+    if (!error) {
+      this._notificationContext?.peek("positive", {
+        data: { headline: "Removed from favourites", message: "" },
+      });
+    } else {
+      this._notificationContext?.peek("danger", {
+        data: { headline: "Failed to remove favourite", message: "" },
+      });
+    }
+
     this._loadFavourites();
     window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
   }

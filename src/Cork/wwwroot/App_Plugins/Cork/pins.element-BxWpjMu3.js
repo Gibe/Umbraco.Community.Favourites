@@ -2,11 +2,12 @@ import { LitElement as h, html as c, css as _, state as n, customElement as p } 
 import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
+import { UMB_NOTIFICATION_CONTEXT as g } from "@umbraco-cms/backoffice/notification";
 import { c as l } from "./client.gen-Ce7o8kG8.js";
-var g = Object.defineProperty, b = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
-  for (var a = s > 1 ? void 0 : s ? b(t, r) : t, d = e.length - 1, u; d >= 0; d--)
+var b = Object.defineProperty, y = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
+  for (var a = s > 1 ? void 0 : s ? y(t, r) : t, d = e.length - 1, u; d >= 0; d--)
     (u = e[d]) && (a = (s ? u(t, r, a) : u(a)) || a);
-  return s && a && g(t, r, a), a;
+  return s && a && b(t, r, a), a;
 };
 let o = class extends m(h) {
   constructor() {
@@ -18,6 +19,8 @@ let o = class extends m(h) {
         v.TYPE,
         this._boundRefresh
       );
+    }), this.consumeContext(g, (e) => {
+      this._notificationContext = e;
     });
   }
   disconnectedCallback() {
@@ -42,10 +45,16 @@ let o = class extends m(h) {
     ), window.dispatchEvent(new PopStateEvent("popstate"));
   }
   async _removeFavourite(e, t) {
-    e.stopPropagation(), await l.delete({
+    e.stopPropagation();
+    const { error: r } = await l.delete({
       url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
       path: { nodeKey: t },
       security: [{ scheme: "bearer", type: "http" }]
+    });
+    r ? this._notificationContext?.peek("danger", {
+      data: { headline: "Failed to remove favourite", message: "" }
+    }) : this._notificationContext?.peek("positive", {
+      data: { headline: "Removed from favourites", message: "" }
     }), this._loadFavourites(), window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
   }
   _onDragStart(e, t) {
@@ -135,9 +144,9 @@ i([
 o = i([
   p("cork-pins")
 ], o);
-const I = o;
+const T = o;
 export {
   o as Pins,
-  I as default
+  T as default
 };
-//# sourceMappingURL=pins.element-Igf9Y3ny.js.map
+//# sourceMappingURL=pins.element-BxWpjMu3.js.map
