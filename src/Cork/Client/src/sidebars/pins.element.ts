@@ -89,6 +89,7 @@ export class Pins extends UmbElementMixin(LitElement) {
       security: [{ scheme: "bearer", type: "http" }],
     });
     this._loadFavourites();
+    window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
   }
 
   private _onDragStart(index: number, e: DragEvent) {
@@ -128,11 +129,7 @@ export class Pins extends UmbElementMixin(LitElement) {
 
   render() {
     if (this._loading) {
-      return html`<uui-loader></uui-loader>`;
-    }
-
-    if (this._favourites.length === 0) {
-      return html`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>`;
+      return html``;
     }
 
     return html`

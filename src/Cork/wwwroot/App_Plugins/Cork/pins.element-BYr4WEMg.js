@@ -1,11 +1,16 @@
-import { LitElement as h, html as n, css as _, state as d, customElement as p } from "@umbraco-cms/backoffice/external/lit";
+import { LitElement as h, html as c, css as p, state as n, customElement as _ } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
 import { c } from "./client.gen-Ce7o8kG8.js";
 var g = Object.defineProperty, b = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
+<<<<<<<< HEAD:src/Cork/wwwroot/App_Plugins/Cork/pins.element-BYr4WEMg.js
   for (var a = s > 1 ? void 0 : s ? b(t, r) : t, u = e.length - 1, l; u >= 0; u--)
     (l = e[u]) && (a = (s ? l(t, r, a) : l(a)) || a);
+========
+  for (var a = s > 1 ? void 0 : s ? b(t, r) : t, d = e.length - 1, u; d >= 0; d--)
+    (u = e[d]) && (a = (s ? u(t, r, a) : u(a)) || a);
+>>>>>>>> feature/add-custom-condition-to-hide-show-favourites:src/Cork/wwwroot/App_Plugins/Cork/pins.element-C12UHFFQ.js
   return s && a && g(t, r, a), a;
 };
 let o = class extends m(h) {
@@ -46,7 +51,7 @@ let o = class extends m(h) {
       url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
       path: { nodeKey: t },
       security: [{ scheme: "bearer", type: "http" }]
-    }), this._loadFavourites();
+    }), this._loadFavourites(), window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
   }
   _onDragStart(e, t) {
     this._dragIndex = e, t.dataTransfer && (t.dataTransfer.effectAllowed = "move");
@@ -69,9 +74,9 @@ let o = class extends m(h) {
     });
   }
   render() {
-    return this._loading ? n`<uui-loader></uui-loader>` : this._favourites.length === 0 ? n`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>` : n`
+    return this._loading ? c`` : c`
       ${this._favourites.map(
-      (e, t) => n`
+      (e, t) => c`
           <div
             class="sortable-item ${this._dragOverIndex === t ? "drag-over" : ""}"
             draggable="true"
@@ -101,7 +106,7 @@ let o = class extends m(h) {
   }
 };
 o.styles = [
-  _`
+  p`
       :host {
         display: contents;
       }
@@ -121,23 +126,27 @@ o.styles = [
     `
 ];
 i([
-  d()
+  n()
 ], o.prototype, "_favourites", 2);
 i([
-  d()
+  n()
 ], o.prototype, "_loading", 2);
 i([
-  d()
+  n()
 ], o.prototype, "_dragIndex", 2);
 i([
-  d()
+  n()
 ], o.prototype, "_dragOverIndex", 2);
 o = i([
-  p("cork-pins")
+  _("cork-pins")
 ], o);
 const I = o;
 export {
   o as Pins,
   I as default
 };
+<<<<<<<< HEAD:src/Cork/wwwroot/App_Plugins/Cork/pins.element-BYr4WEMg.js
 //# sourceMappingURL=pins.element-BYr4WEMg.js.map
+========
+//# sourceMappingURL=pins.element-C12UHFFQ.js.map
+>>>>>>>> feature/add-custom-condition-to-hide-show-favourites:src/Cork/wwwroot/App_Plugins/Cork/pins.element-C12UHFFQ.js
