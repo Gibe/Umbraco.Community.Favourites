@@ -5,7 +5,7 @@ const t = [
     type: "backofficeEntryPoint",
     js: () => import("./entrypoint-D09Tm1TN.js")
   }
-], n = [
+], i = [
   {
     name: "Cork Sidebar App",
     alias: "Cork.Sidebar.App",
@@ -14,16 +14,19 @@ const t = [
     meta: {
       menu: "Cork.Menu"
     },
-    element: () => import("./sidebar.element-BMuOZKm2.js"),
+    element: () => import("./sidebar.element-Cy4Upedo.js"),
     weight: 999999,
     conditions: [
       {
         alias: "Umb.Condition.SectionAlias",
         match: "Umb.Section.Content"
+      },
+      {
+        alias: "Cork.Condition.HasFavourites"
       }
     ]
   }
-], e = [
+], o = [
   {
     name: "Cork Sidebar Menu",
     alias: "Cork.Menu",
@@ -32,12 +35,12 @@ const t = [
       label: "Favourites"
     }
   }
-], i = [
+], n = [
   {
     name: "Cork Menu Item",
     alias: "Cork.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-e_OBK3_F.js"),
+    element: () => import("./pins.element-BxWpjMu3.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
@@ -47,10 +50,10 @@ const t = [
       ]
     }
   }
-], o = [
+], e = [
   {
-    name: "Cork Entity Action",
-    alias: "Cork.EntityAction",
+    name: "Cork Favourite Entity Action",
+    alias: "Cork.EntityAction.Favourite",
     type: "entityAction",
     kind: "default",
     weight: 10,
@@ -63,17 +66,61 @@ const t = [
     conditions: [
       {
         alias: "Umb.Condition.EntityIsNotTrashed"
+      },
+      {
+        alias: "Cork.Condition.IsNotFavourited"
+      }
+    ]
+  },
+  {
+    name: "Cork Unfavourite Entity Action",
+    alias: "Cork.EntityAction.Unfavourite",
+    type: "entityAction",
+    kind: "default",
+    weight: 10,
+    api: () => import("./unfavourite-entityaction-DacQ2opT.js"),
+    forEntityTypes: ["document"],
+    meta: {
+      label: "Unfavourite",
+      icon: "icon-pushpin"
+    },
+    conditions: [
+      {
+        alias: "Umb.Condition.EntityIsNotTrashed"
+      },
+      {
+        alias: "Cork.Condition.IsFavourited"
       }
     ]
   }
-], a = [
+], a = "Cork.Condition.HasFavourites", s = "Cork.Condition.IsFavourited", r = "Cork.Condition.IsNotFavourited", m = [
+  {
+    name: "Cork Has Favourites Condition",
+    alias: a,
+    type: "condition",
+    api: () => import("./has-favourites.condition-Jw3ov3l5.js")
+  },
+  {
+    name: "Cork Is Favourited Condition",
+    alias: s,
+    type: "condition",
+    api: () => import("./is-favourited.condition-XHws4fJf.js")
+  },
+  {
+    name: "Cork Is Not Favourited Condition",
+    alias: r,
+    type: "condition",
+    api: () => import("./is-not-favourited.condition-BFcs-_RG.js")
+  }
+], p = [
   ...t,
+  ...i,
+  ...o,
   ...n,
   ...e,
-  ...i,
-  ...o
+  ...m
 ];
 export {
-  a as manifests
+  p as manifests
 };
 //# sourceMappingURL=Cork.js.map

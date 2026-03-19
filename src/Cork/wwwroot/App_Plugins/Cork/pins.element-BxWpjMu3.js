@@ -1,12 +1,13 @@
-import { LitElement as h, html as n, css as _, state as d, customElement as p } from "@umbraco-cms/backoffice/external/lit";
+import { LitElement as h, html as c, css as _, state as n, customElement as p } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
+import { UMB_NOTIFICATION_CONTEXT as g } from "@umbraco-cms/backoffice/notification";
 import { c as l } from "./client.gen-Ce7o8kG8.js";
-var g = Object.defineProperty, b = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
-  for (var a = s > 1 ? void 0 : s ? b(t, r) : t, u = e.length - 1, c; u >= 0; u--)
-    (c = e[u]) && (a = (s ? c(t, r, a) : c(a)) || a);
-  return s && a && g(t, r, a), a;
+var b = Object.defineProperty, y = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
+  for (var a = s > 1 ? void 0 : s ? y(t, r) : t, d = e.length - 1, u; d >= 0; d--)
+    (u = e[d]) && (a = (s ? u(t, r, a) : u(a)) || a);
+  return s && a && b(t, r, a), a;
 };
 let o = class extends m(h) {
   constructor() {
@@ -14,10 +15,12 @@ let o = class extends m(h) {
   }
   connectedCallback() {
     super.connectedCallback(), this._loadFavourites(), window.addEventListener("cork-favourites-updated", this._boundRefresh), this.consumeContext(f, (e) => {
-      this._actionEventContext = e, e?.addEventListener(
+      this._actionEventContext = e, e && e.addEventListener(
         v.TYPE,
         this._boundRefresh
       );
+    }), this.consumeContext(g, (e) => {
+      this._notificationContext = e;
     });
   }
   disconnectedCallback() {
@@ -42,11 +45,17 @@ let o = class extends m(h) {
     ), window.dispatchEvent(new PopStateEvent("popstate"));
   }
   async _removeFavourite(e, t) {
-    e.stopPropagation(), await l.delete({
+    e.stopPropagation();
+    const { error: r } = await l.delete({
       url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
       path: { nodeKey: t },
       security: [{ scheme: "bearer", type: "http" }]
-    }), this._loadFavourites();
+    });
+    r ? this._notificationContext?.peek("danger", {
+      data: { headline: "Failed to remove favourite", message: "" }
+    }) : this._notificationContext?.peek("positive", {
+      data: { headline: "Removed from favourites", message: "" }
+    }), this._loadFavourites(), window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
   }
   _onDragStart(e, t) {
     this._dragIndex = e, t.dataTransfer && (t.dataTransfer.effectAllowed = "move");
@@ -69,9 +78,9 @@ let o = class extends m(h) {
     });
   }
   render() {
-    return this._loading ? n`<uui-loader></uui-loader>` : this._favourites.length === 0 ? n`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>` : n`
+    return this._loading ? c`` : c`
       ${this._favourites.map(
-      (e, t) => n`
+      (e, t) => c`
           <div
             class="sortable-item ${this._dragOverIndex === t ? "drag-over" : ""}"
             draggable="true"
@@ -90,7 +99,7 @@ let o = class extends m(h) {
                   label="Remove"
                   @click=${(r) => this._removeFavourite(r, e.nodeKey)}
                 >
-                  <uui-icon name="icon-pushpin"></uui-icon>
+                  <uui-icon name="icon-delete"></uui-icon>
                 </uui-button>
               </uui-action-bar>
             </uui-menu-item>
@@ -121,23 +130,23 @@ o.styles = [
     `
 ];
 i([
-  d()
+  n()
 ], o.prototype, "_favourites", 2);
 i([
-  d()
+  n()
 ], o.prototype, "_loading", 2);
 i([
-  d()
+  n()
 ], o.prototype, "_dragIndex", 2);
 i([
-  d()
+  n()
 ], o.prototype, "_dragOverIndex", 2);
 o = i([
   p("cork-pins")
 ], o);
-const I = o;
+const T = o;
 export {
   o as Pins,
-  I as default
+  T as default
 };
-//# sourceMappingURL=pins.element-e_OBK3_F.js.map
+//# sourceMappingURL=pins.element-BxWpjMu3.js.map

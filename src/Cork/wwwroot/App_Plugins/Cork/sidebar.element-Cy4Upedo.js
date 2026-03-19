@@ -1,5 +1,5 @@
 import { html as B, css as nt, state as ot, customElement as ht } from "@umbraco-cms/backoffice/external/lit";
-import "./pins.element-e_OBK3_F.js";
+import "./pins.element-BxWpjMu3.js";
 const U = globalThis, z = U.ShadowRoot && (U.ShadyCSS === void 0 || U.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, X = Symbol(), I = /* @__PURE__ */ new WeakMap();
 let at = class {
   constructor(t, e, s) {
@@ -560,4 +560,4 @@ M = rt([
 export {
   M as default
 };
-//# sourceMappingURL=sidebar.element-BMuOZKm2.js.map
+//# sourceMappingURL=sidebar.element-Cy4Upedo.js.map
