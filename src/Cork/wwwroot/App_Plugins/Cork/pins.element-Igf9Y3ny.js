@@ -1,16 +1,11 @@
-import { LitElement as h, html as c, css as p, state as n, customElement as _ } from "@umbraco-cms/backoffice/external/lit";
+import { LitElement as h, html as c, css as _, state as n, customElement as p } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
-import { c } from "./client.gen-Ce7o8kG8.js";
+import { c as l } from "./client.gen-Ce7o8kG8.js";
 var g = Object.defineProperty, b = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
-<<<<<<<< HEAD:src/Cork/wwwroot/App_Plugins/Cork/pins.element-BYr4WEMg.js
-  for (var a = s > 1 ? void 0 : s ? b(t, r) : t, u = e.length - 1, l; u >= 0; u--)
-    (l = e[u]) && (a = (s ? l(t, r, a) : l(a)) || a);
-========
   for (var a = s > 1 ? void 0 : s ? b(t, r) : t, d = e.length - 1, u; d >= 0; d--)
     (u = e[d]) && (a = (s ? u(t, r, a) : u(a)) || a);
->>>>>>>> feature/add-custom-condition-to-hide-show-favourites:src/Cork/wwwroot/App_Plugins/Cork/pins.element-C12UHFFQ.js
   return s && a && g(t, r, a), a;
 };
 let o = class extends m(h) {
@@ -33,7 +28,7 @@ let o = class extends m(h) {
   }
   async _loadFavourites() {
     this._loading = !0;
-    const { data: e, error: t } = await c.get({
+    const { data: e, error: t } = await l.get({
       url: "/umbraco/cork/api/v1/favourites",
       security: [{ scheme: "bearer", type: "http" }]
     });
@@ -47,7 +42,7 @@ let o = class extends m(h) {
     ), window.dispatchEvent(new PopStateEvent("popstate"));
   }
   async _removeFavourite(e, t) {
-    e.stopPropagation(), await c.delete({
+    e.stopPropagation(), await l.delete({
       url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
       path: { nodeKey: t },
       security: [{ scheme: "bearer", type: "http" }]
@@ -67,7 +62,7 @@ let o = class extends m(h) {
     this._dragIndex = null, this._dragOverIndex = null;
   }
   async _saveSortOrder() {
-    await c.put({
+    await l.put({
       url: "/umbraco/cork/api/v1/favourites/sort",
       body: { nodeKeys: this._favourites.map((e) => e.nodeKey) },
       security: [{ scheme: "bearer", type: "http" }]
@@ -106,7 +101,7 @@ let o = class extends m(h) {
   }
 };
 o.styles = [
-  p`
+  _`
       :host {
         display: contents;
       }
@@ -138,15 +133,11 @@ i([
   n()
 ], o.prototype, "_dragOverIndex", 2);
 o = i([
-  _("cork-pins")
+  p("cork-pins")
 ], o);
 const I = o;
 export {
   o as Pins,
   I as default
 };
-<<<<<<<< HEAD:src/Cork/wwwroot/App_Plugins/Cork/pins.element-BYr4WEMg.js
-//# sourceMappingURL=pins.element-BYr4WEMg.js.map
-========
-//# sourceMappingURL=pins.element-C12UHFFQ.js.map
->>>>>>>> feature/add-custom-condition-to-hide-show-favourites:src/Cork/wwwroot/App_Plugins/Cork/pins.element-C12UHFFQ.js
+//# sourceMappingURL=pins.element-Igf9Y3ny.js.map

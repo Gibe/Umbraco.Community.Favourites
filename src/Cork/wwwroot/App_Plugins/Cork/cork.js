@@ -20,10 +20,13 @@ const t = [
       {
         alias: "Umb.Condition.SectionAlias",
         match: "Umb.Section.Content"
+      },
+      {
+        alias: "Cork.Condition.HasFavourites"
       }
     ]
   }
-], e = [
+], i = [
   {
     name: "Cork Sidebar Menu",
     alias: "Cork.Menu",
@@ -32,12 +35,12 @@ const t = [
       label: "Favourites"
     }
   }
-], i = [
+], e = [
   {
     name: "Cork Menu Item",
     alias: "Cork.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-BYr4WEMg.js"),
+    element: () => import("./pins.element-Igf9Y3ny.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
@@ -66,14 +69,22 @@ const t = [
       }
     ]
   }
-], a = [
+], a = "Cork.Condition.HasFavourites", s = [
+  {
+    name: "Cork Has Favourites Condition",
+    alias: a,
+    type: "condition",
+    api: () => import("./has-favourites.condition-Jw3ov3l5.js")
+  }
+], r = [
   ...t,
   ...n,
-  ...e,
   ...i,
-  ...o
+  ...e,
+  ...o,
+  ...s
 ];
 export {
-  a as manifests
+  r as manifests
 };
 //# sourceMappingURL=Cork.js.map
