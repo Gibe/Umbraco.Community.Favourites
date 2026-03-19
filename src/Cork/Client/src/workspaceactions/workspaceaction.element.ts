@@ -1,8 +1,8 @@
-import { LitElement, html, customElement, state } from "@umbraco-cms/backoffice/external/lit";
+import { LitElement, html, customElement, state, property } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
 import { UMB_DOCUMENT_WORKSPACE_CONTEXT } from "@umbraco-cms/backoffice/document";
-import { UMB_NOTIFICATION_CONTEXT } from "@umbraco-cms/backoffice/notification";
 import { client } from "../api/client.gen.js";
+import type CorkPinWorkspaceAction from "./workspaceaction.action.js";
 
 interface FavouriteItem {
   nodeKey: string;
@@ -10,61 +10,13 @@ interface FavouriteItem {
   published: boolean;
 }
 
-// Shared helpers for favourites API operations. These can be reused by other
-// workspace-related code (e.g. actions) to avoid duplicating logic.
-async function fetchFavourites(): Promise<FavouriteItem[]> {
-  const { data } = await client.get({
-    url: "/umbraco/cork/api/v1/favourites",
-    security: [{ scheme: "bearer", type: "http" }],
-  });
-
-  return (data as FavouriteItem[]) ?? [];
-}
-
-async function updateFavouriteOnServer(options: {
-  nodeKey: string;
-  currentlyPinned: boolean;
-  notificationContext?: typeof UMB_NOTIFICATION_CONTEXT.TYPE;
-}): Promise<boolean> {
-  const { nodeKey, currentlyPinned, notificationContext } = options;
-
-  if (currentlyPinned) {
-    const { error } = await client.delete({
-      url: "/umbraco/cork/api/v1/favourites/{nodeKey}",
-      path: { nodeKey },
-      security: [{ scheme: "bearer", type: "http" }],
-    });
-
-    if (!error) {
-      notificationContext?.peek("positive", {
-        data: { headline: "Removed from favourites", message: "" },
-      });
-      window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
-      return true;
-    }
-
-    return false;
-  }
-
-  const { error } = await client.post({
-    url: "/umbraco/cork/api/v1/favourites",
-    body: { nodeKey },
-    security: [{ scheme: "bearer", type: "http" }],
-  });
-
-  if (!error) {
-    notificationContext?.peek("positive", {
-      data: { headline: "Added to favourites", message: "" },
-    });
-    window.dispatchEvent(new CustomEvent("cork-favourites-updated"));
-    return true;
-  }
-
-  return false;
-}
-
 @customElement("cork-pin-workspace-action")
 export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitElement) {
+  
+  // Umbraco automatically passes the initialized API class into this property
+  @property({ attribute: false })
+  public api?: CorkPinWorkspaceAction;
+
   @state()
   private _isPinned = false;
 
@@ -72,7 +24,6 @@ export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitEl
   private _loading = true;
 
   #workspaceContext?: typeof UMB_DOCUMENT_WORKSPACE_CONTEXT.TYPE;
-  #notificationContext?: typeof UMB_NOTIFICATION_CONTEXT.TYPE;
   #onFavouritesUpdated = () => this.#checkPinStatus();
 
   constructor() {
@@ -84,67 +35,63 @@ export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitEl
     });
   }
 
-    this.consumeContext(UMB_NOTIFICATION_CONTEXT, (ctx) => {
-      this.#notificationContext = ctx;
-    });
-
   connectedCallback() {
-    super.connectedCallback?.();
+    super.connectedCallback();
     window.addEventListener("cork-favourites-updated", this.#onFavouritesUpdated);
   }
 
   disconnectedCallback() {
     window.removeEventListener("cork-favourites-updated", this.#onFavouritesUpdated);
-    super.disconnectedCallback?.();
+    super.disconnectedCallback();
   }
 
   async #checkPinStatus() {
     const unique = this.#workspaceContext?.getUnique();
-    if (!unique) {
+    const isNew = this.#workspaceContext?.getIsNew();
+
+    if (!unique || isNew) {
       this._loading = false;
       return;
     }
 
-    const favourites = await fetchFavourites();
+    const { data } = await client.get({
+      url: "/umbraco/cork/api/v1/favourites",
+      security: [{ scheme: "bearer", type: "http" }],
+    });
+
+    const favourites = (data as FavouriteItem[]) ?? [];
     this._isPinned = favourites.some((f) => f.nodeKey === unique);
     this._loading = false;
   }
 
-  async #togglePin() {
-    const unique = this.#workspaceContext?.getUnique();
-    const isNew = this.#workspaceContext?.getIsNew();
-
-    if (isNew || !unique) {
-      this.#notificationContext?.peek("warning", {
-        data: { headline: "Save first", message: "You cannot pin an unsaved document." },
-      });
-      return;
-    }
+  async #onClick() {
+    if (!this.api) return;
 
     this._loading = true;
-
-    const success = await updateFavouriteOnServer({
-      nodeKey: unique,
-      currentlyPinned: this._isPinned,
-      notificationContext: this.#notificationContext,
-    });
-
-    if (success) {
-      this._isPinned = !this._isPinned;
-    }
-
+    
+    // Delegate the actual heavy-lifting back to the workspace action api class
+    await this.api.execute();
+    
     this._loading = false;
   }
 
   render() {
+    if (this._loading) {
+      return html`<uui-button look="secondary" disabled label="Loading..."></uui-button>`;
+    }
+
+    const label = this._isPinned ? "Unpin" : "Pin";
+    const icon = this._isPinned ? "icon-wrong" : "icon-pushpin";
+
     return html`
       <uui-button
-        look="secondary"
-        label=${this._isPinned ? "Unpin" : "Pin"}
-        @click=${this.#togglePin}
-        ?disabled=${this._loading}
+        @click=${this.#onClick}
+        look=${this._isPinned ? "outline" : "secondary"}
+        color="default"
+        label=${label}
       >
-        ${this._isPinned ? "Unpin" : "Pin"}
+        <uui-icon name=${icon}></uui-icon>
+        ${label}
       </uui-button>
     `;
   }
