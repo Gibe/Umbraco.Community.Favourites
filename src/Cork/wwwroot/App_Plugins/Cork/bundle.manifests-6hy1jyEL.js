@@ -4,7 +4,7 @@ const B = [
     name: "Cork Entrypoint",
     alias: "Cork.Entrypoint",
     type: "backofficeEntryPoint",
-    js: () => import("./entrypoint-BsSFPrW6.js")
+    js: () => import("./entrypoint-4LatMYcQ.js")
   }
 ], M = [
   {
@@ -41,7 +41,7 @@ const B = [
     name: "Cork Menu Item",
     alias: "Cork.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-B7VPNxTN.js"),
+    element: () => import("./pins.element-D6ADWXfs.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
@@ -58,7 +58,7 @@ const B = [
     type: "entityAction",
     kind: "default",
     weight: 10,
-    api: () => import("./entityaction-CxNN8UzC.js"),
+    api: () => import("./entityaction-DFl2JoON.js"),
     forEntityTypes: ["document"],
     meta: {
       label: "Favourite",
@@ -654,4 +654,4 @@ export {
   fe as c,
   me as m
 };
-//# sourceMappingURL=bundle.manifests-NvKd9CoH.js.map
+//# sourceMappingURL=bundle.manifests-6hy1jyEL.js.map

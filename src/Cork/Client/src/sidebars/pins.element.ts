@@ -129,7 +129,7 @@ export class Pins extends UmbElementMixin(LitElement) {
 
   render() {
     if (this._loading) {
-      return html`<uui-loader></uui-loader>`;
+      return html``;
     }
 
     return html`

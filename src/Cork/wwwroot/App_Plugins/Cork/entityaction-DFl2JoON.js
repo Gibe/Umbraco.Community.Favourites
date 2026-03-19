@@ -1,6 +1,6 @@
 import { UmbEntityActionBase as i } from "@umbraco-cms/backoffice/entity-action";
 import { UMB_NOTIFICATION_CONTEXT as a } from "@umbraco-cms/backoffice/notification";
-import { c as s } from "./bundle.manifests-NvKd9CoH.js";
+import { c as s } from "./bundle.manifests-6hy1jyEL.js";
 class u extends i {
   #e;
   constructor(e, t) {
@@ -24,4 +24,4 @@ class u extends i {
 export {
   u as default
 };
-//# sourceMappingURL=entityaction-CxNN8UzC.js.map
+//# sourceMappingURL=entityaction-DFl2JoON.js.map
