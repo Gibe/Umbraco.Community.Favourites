@@ -1,6 +1,6 @@
 import { html as B, css as nt, state as ot, customElement as ht } from "@umbraco-cms/backoffice/external/lit";
 import "./pins.element-BxWpjMu3.js";
-const U = globalThis, z = U.ShadowRoot && (U.ShadyCSS === void 0 || U.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, X = Symbol(), I = /* @__PURE__ */ new WeakMap();
+const U = globalThis, D = U.ShadowRoot && (U.ShadyCSS === void 0 || U.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, X = Symbol(), I = /* @__PURE__ */ new WeakMap();
 let at = class {
   constructor(t, e, s) {
     if (this._$cssResult$ = !0, s !== X) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
@@ -9,7 +9,7 @@ let at = class {
   get styleSheet() {
     let t = this.o;
     const e = this.t;
-    if (z && t === void 0) {
+    if (D && t === void 0) {
       const s = e !== void 0 && e.length === 1;
       s && (t = I.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && I.set(e, t));
     }
@@ -20,17 +20,17 @@ let at = class {
   }
 };
 const lt = (r) => new at(typeof r == "string" ? r : r + "", void 0, X), ct = (r, t) => {
-  if (z) r.adoptedStyleSheets = t.map(((e) => e instanceof CSSStyleSheet ? e : e.styleSheet));
+  if (D) r.adoptedStyleSheets = t.map(((e) => e instanceof CSSStyleSheet ? e : e.styleSheet));
   else for (const e of t) {
     const s = document.createElement("style"), i = U.litNonce;
     i !== void 0 && s.setAttribute("nonce", i), s.textContent = e.cssText, r.appendChild(s);
   }
-}, W = z ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
+}, W = D ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
   let e = "";
   for (const s of t.cssRules) e += s.cssText;
   return lt(e);
 })(r) : r;
-const { is: dt, defineProperty: pt, getOwnPropertyDescriptor: ut, getOwnPropertyNames: $t, getOwnPropertySymbols: _t, getPrototypeOf: ft } = Object, T = globalThis, V = T.trustedTypes, At = V ? V.emptyScript : "", mt = T.reactiveElementPolyfillSupport, b = (r, t) => r, k = { toAttribute(r, t) {
+const { is: dt, defineProperty: pt, getOwnPropertyDescriptor: ut, getOwnPropertyNames: $t, getOwnPropertySymbols: _t, getPrototypeOf: ft } = Object, N = globalThis, V = N.trustedTypes, At = V ? V.emptyScript : "", mt = N.reactiveElementPolyfillSupport, b = (r, t) => r, k = { toAttribute(r, t) {
   switch (t) {
     case Boolean:
       r = r ? At : null;
@@ -59,7 +59,7 @@ const { is: dt, defineProperty: pt, getOwnPropertyDescriptor: ut, getOwnProperty
   }
   return e;
 } }, Y = (r, t) => !dt(r, t), q = { attribute: !0, type: String, converter: k, reflect: !1, useDefault: !1, hasChanged: Y };
-Symbol.metadata ??= Symbol("metadata"), T.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
+Symbol.metadata ??= Symbol("metadata"), N.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
 class g extends HTMLElement {
   static addInitializer(t) {
     this._$Ei(), (this.l ??= []).push(t);
@@ -241,13 +241,13 @@ class g extends HTMLElement {
   firstUpdated(t) {
   }
 }
-g.elementStyles = [], g.shadowRootOptions = { mode: "open" }, g[b("elementProperties")] = /* @__PURE__ */ new Map(), g[b("finalized")] = /* @__PURE__ */ new Map(), mt?.({ ReactiveElement: g }), (T.reactiveElementVersions ??= []).push("2.1.1");
-const D = globalThis, H = D.trustedTypes, F = H ? H.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, tt = "$lit$", _ = `lit$${Math.random().toFixed(9).slice(2)}$`, et = "?" + _, gt = `<${et}>`, m = document, w = () => m.createComment(""), C = (r) => r === null || typeof r != "object" && typeof r != "function", j = Array.isArray, yt = (r) => j(r) || typeof r?.[Symbol.iterator] == "function", R = `[ 	
-\f\r]`, E = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, J = /-->/g, K = />/g, f = RegExp(`>|${R}(?:([^\\s"'>=/]+)(${R}*=${R}*(?:[^ 	
+g.elementStyles = [], g.shadowRootOptions = { mode: "open" }, g[b("elementProperties")] = /* @__PURE__ */ new Map(), g[b("finalized")] = /* @__PURE__ */ new Map(), mt?.({ ReactiveElement: g }), (N.reactiveElementVersions ??= []).push("2.1.1");
+const j = globalThis, H = j.trustedTypes, K = H ? H.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, tt = "$lit$", _ = `lit$${Math.random().toFixed(9).slice(2)}$`, et = "?" + _, gt = `<${et}>`, m = document, w = () => m.createComment(""), C = (r) => r === null || typeof r != "object" && typeof r != "function", z = Array.isArray, yt = (r) => z(r) || typeof r?.[Symbol.iterator] == "function", R = `[ 	
+\f\r]`, E = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, F = /-->/g, J = />/g, f = RegExp(`>|${R}(?:([^\\s"'>=/]+)(${R}*=${R}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), Z = /'/g, G = /"/g, st = /^(?:script|style|textarea|title)$/i, y = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), Q = /* @__PURE__ */ new WeakMap(), A = m.createTreeWalker(m, 129);
 function it(r, t) {
-  if (!j(r) || !r.hasOwnProperty("raw")) throw Error("invalid template strings array");
-  return F !== void 0 ? F.createHTML(t) : t;
+  if (!z(r) || !r.hasOwnProperty("raw")) throw Error("invalid template strings array");
+  return K !== void 0 ? K.createHTML(t) : t;
 }
 const vt = (r, t) => {
   const e = r.length - 1, s = [];
@@ -255,7 +255,7 @@ const vt = (r, t) => {
   for (let l = 0; l < e; l++) {
     const h = r[l];
     let c, p, a = -1, u = 0;
-    for (; u < h.length && (o.lastIndex = u, p = o.exec(h), p !== null); ) u = o.lastIndex, o === E ? p[1] === "!--" ? o = J : p[1] !== void 0 ? o = K : p[2] !== void 0 ? (st.test(p[2]) && (i = RegExp("</" + p[2], "g")), o = f) : p[3] !== void 0 && (o = f) : o === f ? p[0] === ">" ? (o = i ?? E, a = -1) : p[1] === void 0 ? a = -2 : (a = o.lastIndex - p[2].length, c = p[1], o = p[3] === void 0 ? f : p[3] === '"' ? G : Z) : o === G || o === Z ? o = f : o === J || o === K ? o = E : (o = f, i = void 0);
+    for (; u < h.length && (o.lastIndex = u, p = o.exec(h), p !== null); ) u = o.lastIndex, o === E ? p[1] === "!--" ? o = F : p[1] !== void 0 ? o = J : p[2] !== void 0 ? (st.test(p[2]) && (i = RegExp("</" + p[2], "g")), o = f) : p[3] !== void 0 && (o = f) : o === f ? p[0] === ">" ? (o = i ?? E, a = -1) : p[1] === void 0 ? a = -2 : (a = o.lastIndex - p[2].length, c = p[1], o = p[3] === void 0 ? f : p[3] === '"' ? G : Z) : o === G || o === Z ? o = f : o === F || o === J ? o = E : (o = f, i = void 0);
     const $ = o === f && r[l + 1].startsWith("/>") ? " " : "";
     n += o === E ? h + gt : a >= 0 ? (s.push(c), h.slice(0, a) + tt + h.slice(a) + _ + $) : h + _ + (a === -2 ? l : $);
   }
@@ -275,7 +275,7 @@ class P {
       if (i.nodeType === 1) {
         if (i.hasAttributes()) for (const a of i.getAttributeNames()) if (a.endsWith(tt)) {
           const u = p[o++], $ = i.getAttribute(a).split(_), O = /([.?@])?(.*)/.exec(u);
-          h.push({ type: 1, index: n, name: O[2], strings: $, ctor: O[1] === "." ? bt : O[1] === "?" ? St : O[1] === "@" ? wt : N }), i.removeAttribute(a);
+          h.push({ type: 1, index: n, name: O[2], strings: $, ctor: O[1] === "." ? bt : O[1] === "?" ? St : O[1] === "@" ? wt : T }), i.removeAttribute(a);
         } else a.startsWith(_) && (h.push({ type: 6, index: n }), i.removeAttribute(a));
         if (st.test(i.tagName)) {
           const a = i.textContent.split(_), u = a.length - 1;
@@ -375,7 +375,7 @@ class x {
     return e === void 0 && Q.set(t.strings, e = new P(t)), e;
   }
   k(t) {
-    j(this._$AH) || (this._$AH = [], this._$AR());
+    z(this._$AH) || (this._$AH = [], this._$AR());
     const e = this._$AH;
     let s, i = 0;
     for (const n of t) i === e.length ? e.push(s = new x(this.O(w()), this.O(w()), this, this.options)) : s = e[i], s._$AI(n), i++;
@@ -391,7 +391,7 @@ class x {
     this._$AM === void 0 && (this._$Cv = t, this._$AP?.(t));
   }
 }
-class N {
+class T {
   get tagName() {
     return this.element.tagName;
   }
@@ -416,7 +416,7 @@ class N {
     t === d ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t ?? "");
   }
 }
-class bt extends N {
+class bt extends T {
   constructor() {
     super(...arguments), this.type = 3;
   }
@@ -424,7 +424,7 @@ class bt extends N {
     this.element[this.name] = t === d ? void 0 : t;
   }
 }
-class St extends N {
+class St extends T {
   constructor() {
     super(...arguments), this.type = 4;
   }
@@ -432,7 +432,7 @@ class St extends N {
     this.element.toggleAttribute(this.name, !!t && t !== d);
   }
 }
-class wt extends N {
+class wt extends T {
   constructor(t, e, s, i, n) {
     super(t, e, s, i, n), this.type = 5;
   }
@@ -456,8 +456,8 @@ class Ct {
     v(this, t);
   }
 }
-const Pt = D.litHtmlPolyfillSupport;
-Pt?.(P, x), (D.litHtmlVersions ??= []).push("3.3.1");
+const Pt = j.litHtmlPolyfillSupport;
+Pt?.(P, x), (j.litHtmlVersions ??= []).push("3.3.1");
 const xt = (r, t, e) => {
   const s = e?.renderBefore ?? t;
   let i = s._$litPart$;
@@ -508,16 +508,22 @@ let M = class extends S {
   }
   render() {
     return B`
-      <div id="header">
-        <h3>${"Favourites"}</h3>
-        <uui-button
-          aria-expanded=${this._isOpen}
-          aria-label="Toggle Favourites"
-          id="cork-accordion-btn"
-          @click=${this._toggleAccordion}
-        >
-          <uui-symbol-expand ?open=${this._isOpen}></uui-symbol-expand>
-        </uui-button>
+      <div
+        id="header"
+        role="button"
+        tabindex="0"
+        aria-expanded=${this._isOpen}
+        aria-controls="pins-container"
+        @click=${this._toggleAccordion}
+        @keydown=${this._onKeydown}
+      >
+        <h3 id="heading-label">${"Favourites"}</h3>
+
+        <uui-symbol-expand
+          class="icon"
+          ?open=${this._isOpen}
+          aria-hidden="true">
+        </uui-symbol-expand>
       </div>
 
       <div id="pins-container">
@@ -525,30 +531,38 @@ let M = class extends S {
       </div>
     `;
   }
+  _onKeydown(r) {
+    (r.key === "Enter" || r.key === " ") && (r.preventDefault(), this._toggleAccordion());
+  }
 };
 M.styles = nt`
     #header {
       display: flex;
-      flex-direction: row;
       align-items: center;
+      padding: 0 var(--uui-size-8);
+      height: var(--umb-header-layout-height);
+      cursor: pointer;
+      user-select: none;
+      outline: none;
     }
 
-    #header > :first-child {
-      flex-grow: 1;
+    #header:hover {
+      background-color: var(--uui-color-surface-emphasis);
+    }
+
+    #header:focus-visible {
+      outline: -webkit-focus-ring-color auto 1px;
+      background-color: var(--uui-color-surface-emphasis);
     }
 
     #header h3 {
-      display: flex;
-      align-items: center;
-      height: var(--umb-header-layout-height);
+      flex-grow: 1;
       margin: 0;
-      padding: var(--uui-size-4) var(--uui-size-8);
-      box-sizing: border-box;
       font-size: 14px;
     }
 
-    #header #cork-accordion-btn {
-      align-self: stretch;
+    .icon {
+      flex-shrink: 0;
     }
   `;
 rt([
@@ -560,4 +574,4 @@ M = rt([
 export {
   M as default
 };
-//# sourceMappingURL=sidebar.element-Cy4Upedo.js.map
+//# sourceMappingURL=sidebar.element-CAvnFGc6.js.map
