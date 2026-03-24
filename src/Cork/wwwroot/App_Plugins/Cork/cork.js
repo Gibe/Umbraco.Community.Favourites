@@ -1,11 +1,11 @@
-const t = [
+const i = [
   {
     name: "Cork Entrypoint",
     alias: "Cork.Entrypoint",
     type: "backofficeEntryPoint",
     js: () => import("./entrypoint-D09Tm1TN.js")
   }
-], i = [
+], t = [
   {
     name: "Cork Sidebar App",
     alias: "Cork.Sidebar.App",
@@ -14,8 +14,8 @@ const t = [
     meta: {
       menu: "Cork.Menu"
     },
-    element: () => import("./sidebar.element-Cy4Upedo.js"),
-    weight: 999999,
+    element: () => import("./sidebar.element-CAvnFGc6.js"),
+    weight: 500,
     conditions: [
       {
         alias: "Umb.Condition.SectionAlias",
@@ -112,13 +112,32 @@ const t = [
     type: "condition",
     api: () => import("./is-not-favourited.condition-BFcs-_RG.js")
   }
+], c = [
+  {
+    type: "workspaceAction",
+    alias: "Cork.WorkspaceAction.Pin",
+    name: "Cork Pin Workspace Action",
+    api: () => import("./workspaceaction.action-DiLCAWkY.js"),
+    element: () => import("./workspaceaction.element-DvVzW8Pd.js"),
+    weight: 10,
+    conditions: [
+      {
+        alias: "Umb.Condition.WorkspaceAlias",
+        match: "Umb.Workspace.Document"
+      },
+      {
+        alias: "Umb.Condition.EntityIsNotTrashed"
+      }
+    ]
+  }
 ], p = [
-  ...t,
   ...i,
+  ...t,
   ...o,
   ...n,
   ...e,
-  ...m
+  ...m,
+  ...c
 ];
 export {
   p as manifests

@@ -8,7 +8,7 @@ export const manifests: Array<UmbExtensionManifest> = [
       menu: "Cork.Menu",
     },
     element: () => import('./sidebar.element'),
-    weight: 999999,
+    weight: 500,
     conditions: [
       {
         alias: "Umb.Condition.SectionAlias",

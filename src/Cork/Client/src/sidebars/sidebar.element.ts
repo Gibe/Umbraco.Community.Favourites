@@ -12,17 +12,24 @@ export default class CorkMenuWithActionsElement extends LitElement {
 
   render() {
     const label = "Favourites";
+
     return html`
-      <div id="header">
-        <h3>${label}</h3>
-        <uui-button
-          aria-expanded=${this._isOpen}
-          aria-label="Toggle Favourites"
-          id="cork-accordion-btn"
-          @click=${this._toggleAccordion}
-        >
-          <uui-symbol-expand ?open=${this._isOpen}></uui-symbol-expand>
-        </uui-button>
+      <div
+        id="header"
+        role="button"
+        tabindex="0"
+        aria-expanded=${this._isOpen}
+        aria-controls="pins-container"
+        @click=${this._toggleAccordion}
+        @keydown=${this._onKeydown}
+      >
+        <h3 id="heading-label">${label}</h3>
+
+        <uui-symbol-expand
+          class="icon"
+          ?open=${this._isOpen}
+          aria-hidden="true">
+        </uui-symbol-expand>
       </div>
 
       <div id="pins-container">
@@ -31,29 +38,41 @@ export default class CorkMenuWithActionsElement extends LitElement {
     `;
   }
 
+  private _onKeydown(e: KeyboardEvent) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this._toggleAccordion();
+    }
+  }
+
   static override styles = css`
     #header {
       display: flex;
-      flex-direction: row;
       align-items: center;
+      padding: 0 var(--uui-size-8);
+      height: var(--umb-header-layout-height);
+      cursor: pointer;
+      user-select: none;
+      outline: none;
     }
 
-    #header > :first-child {
-      flex-grow: 1;
+    #header:hover {
+      background-color: var(--uui-color-surface-emphasis);
+    }
+
+    #header:focus-visible {
+      outline: -webkit-focus-ring-color auto 1px;
+      background-color: var(--uui-color-surface-emphasis);
     }
 
     #header h3 {
-      display: flex;
-      align-items: center;
-      height: var(--umb-header-layout-height);
+      flex-grow: 1;
       margin: 0;
-      padding: var(--uui-size-4) var(--uui-size-8);
-      box-sizing: border-box;
       font-size: 14px;
     }
 
-    #header #cork-accordion-btn {
-      align-self: stretch;
+    .icon {
+      flex-shrink: 0;
     }
   `;
 }
