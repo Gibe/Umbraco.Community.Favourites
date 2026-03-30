@@ -14,15 +14,12 @@ const i = [
     meta: {
       menu: "Cork.Menu"
     },
-    element: () => import("./sidebar.element-CAvnFGc6.js"),
+    element: () => import("./sidebar.element-D0iywQMz.js"),
     weight: 500,
     conditions: [
       {
         alias: "Umb.Condition.SectionAlias",
         match: "Umb.Section.Content"
-      },
-      {
-        alias: "Cork.Condition.HasFavourites"
       }
     ]
   }
@@ -40,7 +37,7 @@ const i = [
     name: "Cork Menu Item",
     alias: "Cork.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-BxWpjMu3.js"),
+    element: () => import("./pins.element-CzDmHfQI.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",

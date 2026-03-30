@@ -1,13 +1,13 @@
-import { LitElement as h, html as c, css as _, state as n, customElement as p } from "@umbraco-cms/backoffice/external/lit";
+import { LitElement as h, html as n, css as _, state as d, customElement as p } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
 import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
 import { UMB_NOTIFICATION_CONTEXT as g } from "@umbraco-cms/backoffice/notification";
 import { c as l } from "./client.gen-Ce7o8kG8.js";
-var b = Object.defineProperty, y = Object.getOwnPropertyDescriptor, i = (e, t, r, s) => {
-  for (var a = s > 1 ? void 0 : s ? y(t, r) : t, d = e.length - 1, u; d >= 0; d--)
-    (u = e[d]) && (a = (s ? u(t, r, a) : u(a)) || a);
-  return s && a && b(t, r, a), a;
+var b = Object.defineProperty, y = Object.getOwnPropertyDescriptor, a = (e, t, r, s) => {
+  for (var i = s > 1 ? void 0 : s ? y(t, r) : t, u = e.length - 1, c; u >= 0; u--)
+    (c = e[u]) && (i = (s ? c(t, r, i) : c(i)) || i);
+  return s && i && b(t, r, i), i;
 };
 let o = class extends m(h) {
   constructor() {
@@ -78,9 +78,9 @@ let o = class extends m(h) {
     });
   }
   render() {
-    return this._loading ? c`` : c`
+    return this._loading ? n`` : this._favourites.length === 0 ? n`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>` : n`
       ${this._favourites.map(
-      (e, t) => c`
+      (e, t) => n`
           <div
             class="sortable-item ${this._dragOverIndex === t ? "drag-over" : ""}"
             draggable="true"
@@ -129,19 +129,19 @@ o.styles = [
       }
     `
 ];
-i([
-  n()
+a([
+  d()
 ], o.prototype, "_favourites", 2);
-i([
-  n()
+a([
+  d()
 ], o.prototype, "_loading", 2);
-i([
-  n()
+a([
+  d()
 ], o.prototype, "_dragIndex", 2);
-i([
-  n()
+a([
+  d()
 ], o.prototype, "_dragOverIndex", 2);
-o = i([
+o = a([
   p("cork-pins")
 ], o);
 const T = o;
@@ -149,4 +149,4 @@ export {
   o as Pins,
   T as default
 };
-//# sourceMappingURL=pins.element-BxWpjMu3.js.map
+//# sourceMappingURL=pins.element-CzDmHfQI.js.map
