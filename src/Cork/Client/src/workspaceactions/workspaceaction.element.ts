@@ -1,4 +1,4 @@
-import { LitElement, html, customElement, state, property } from "@umbraco-cms/backoffice/external/lit";
+import { LitElement, html, css, customElement, state, property } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
 import { UMB_DOCUMENT_WORKSPACE_CONTEXT } from "@umbraco-cms/backoffice/document";
 import { client } from "../api/client.gen.js";
@@ -75,23 +75,35 @@ export default class CorkPinWorkspaceActionElement extends UmbElementMixin(LitEl
     this._loading = false;
   }
 
-  render() {
-    if (this._loading) {
-      return html`<uui-button look="secondary" disabled label="Loading..."></uui-button>`;
+  static styles = css`
+    .cork-workspace-button span {
+      margin: 0 6px 0 2px;
     }
 
-    const label = this._isPinned ? "Unpin" : "Pin";
+    .cork-workspace-button uui-icon {
+      margin-left: 3px;
+    }
+  `
+
+  render() {
+    if (this._loading) {
+      return html`<uui-button look="outline" disabled label="Loading..."></uui-button>`;
+    }
+
+    const label = this._isPinned ? "Unfavourite" : "Favourite";
     const icon = this._isPinned ? "icon-wrong" : "icon-pushpin";
 
     return html`
       <uui-button
         @click=${this.#onClick}
-        look=${this._isPinned ? "outline" : "secondary"}
+        look="outline"
         color="default"
         label=${label}
+        compact=""
+        class="cork-workspace-button"
       >
         <uui-icon name=${icon}></uui-icon>
-        ${label}
+        <span>${label}</span>
       </uui-button>
     `;
   }
