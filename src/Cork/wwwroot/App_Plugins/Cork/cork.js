@@ -115,8 +115,8 @@ const i = [
     alias: "Cork.WorkspaceAction.Pin",
     name: "Cork Pin Workspace Action",
     api: () => import("./workspaceaction.action-DiLCAWkY.js"),
-    element: () => import("./workspaceaction.element-DvVzW8Pd.js"),
-    weight: 10,
+    element: () => import("./workspaceaction.element-CRyNjry6.js"),
+    weight: 100,
     conditions: [
       {
         alias: "Umb.Condition.WorkspaceAlias",
