@@ -148,6 +148,10 @@ export class Pins extends UmbElementMixin(LitElement) {
     if (this._loading) {
       return html``;
     }
+    
+    if (this._favourites.length === 0) {
+      return html`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>`;
+    }
 
     return html`
       ${this._favourites.map(

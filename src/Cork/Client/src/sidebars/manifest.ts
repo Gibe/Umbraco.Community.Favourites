@@ -14,9 +14,6 @@ export const manifests: Array<UmbExtensionManifest> = [
         alias: "Umb.Condition.SectionAlias",
         match: "Umb.Section.Content",
       },
-      {
-        alias: "Cork.Condition.HasFavourites",
-      },
     ],
   },
 ];
