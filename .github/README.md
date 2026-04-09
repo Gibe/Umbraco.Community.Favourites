@@ -11,6 +11,7 @@ Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v15+) th
 - **Pin from the workspace** — a pin button appears in the document workspace toolbar for any non-trashed content item, toggling the item in and out of your favourites
 - **Entity actions** — right-click any non-trashed content item to Favourite or Unfavourite it directly from the tree or list view
 - **Favourites sidebar** — a sidebar panel in the Content section lists all your pinned items with one-click navigation
+- **Sorting** — Sort your favourites by simply dragging to rearrange them in the sidebar
 - **Conditions** — three built-in extension conditions for use when building your own Umbraco extensions:
   - `Favourites.Condition.HasFavourites` — true when the current user has at least one favourite
   - `Favourites.Condition.IsFavourited` — true when the current entity is in the user's favourites
@@ -18,7 +19,7 @@ Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v15+) th
 
 ## Requirements
 
-- Umbraco CMS v15+
+- Umbraco CMS v17+
 - .NET 10+
 
 ## Installation
