@@ -41,3 +41,9 @@ The solution includes a test site (`Umbraco.Community.Favourites.TestSite`) to m
 ## Acknowledgments
 
 Built by [Gibe Digital](https://gibe.digital/).
+
+Copyright © 2026 Gibe Digital Ltd.
+
+Licensed under the MIT License.
+
+
