@@ -1,0 +1,14 @@
+{
+  "id": "Umbraco.Community.Favourites",
+  "name": "Umbraco.Community.Favourites",
+  "version": "0.0.0",
+  "allowTelemetry": true,
+  "extensions": [
+    {
+      "name": "Favourites Bundle",
+      "alias": "Favourites.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/Favourites/favourites.js"
+    }
+  ]
+}
