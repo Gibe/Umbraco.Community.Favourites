@@ -1,31 +1,42 @@
-# Cork 
+# Umbraco.Community.Favourites
 
-[![Downloads](https://img.shields.io/nuget/dt/Umbraco.Community.Cork?color=cc9900)](https://www.nuget.org/packages/Umbraco.Community.Cork/)
-[![NuGet](https://img.shields.io/nuget/vpre/Umbraco.Community.Cork?color=0273B3)](https://www.nuget.org/packages/Umbraco.Community.Cork)
-[![GitHub license](https://img.shields.io/github/license/g-dove/Cork?color=8AB803)](../LICENSE)
+[![Downloads](https://img.shields.io/nuget/dt/Umbraco.Community.Favourites?color=cc9900)](https://www.nuget.org/packages/Umbraco.Community.Favourites/)
+[![NuGet](https://img.shields.io/nuget/vpre/Umbraco.Community.Favourites?color=0273B3)](https://www.nuget.org/packages/Umbraco.Community.Favourites)
+[![GitHub license](https://img.shields.io/github/license/Gibe/Umbraco.Community.Favourites?color=8AB803)](../LICENSE)
 
-TODO: describe your package
+Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v15+) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user in the database and accessible via a dedicated sidebar panel in the Content section.
 
-<!--
-Including screenshots is a really good idea! 
+## Features
 
-If you put images into /docs/screenshots, then you would reference them in this readme as, for example:
+- **Pin from the workspace** — a pin button appears in the document workspace toolbar for any non-trashed content item, toggling the item in and out of your favourites
+- **Entity actions** — right-click any non-trashed content item to Favourite or Unfavourite it directly from the tree or list view
+- **Favourites sidebar** — a sidebar panel in the Content section lists all your pinned items with one-click navigation
+- **Conditions** — three built-in extension conditions for use when building your own Umbraco extensions:
+  - `Favourites.Condition.HasFavourites` — true when the current user has at least one favourite
+  - `Favourites.Condition.IsFavourited` — true when the current entity is in the user's favourites
+  - `Favourites.Condition.IsNotFavourited` — true when the current entity is not in the user's favourites
 
-<img alt="..." src="https://github.com/g-dove/Cork/blob/develop/docs/screenshots/screenshot.png">
--->
+## Requirements
+
+- Umbraco CMS v15+
+- .NET 10+
 
 ## Installation
 
-Add the package to an existing Umbraco website (v15+) from nuget:
+Add the package to an existing Umbraco website from NuGet:
 
-`dotnet add package Umbraco.Community.Cork`
+```
+dotnet add package Umbraco.Community.Favourites
+```
 
-TODO *provide any other instructions for someone using your package*
+No further configuration is required. The package registers itself via an Umbraco composer and runs its database migrations automatically on startup.
 
 ## Contributing
 
 Contributions to this package are most welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md).
 
+The solution includes a test site (`Umbraco.Community.Favourites.TestSite`) to make local development easier. It is configured for unattended install — check `appsettings.json` for login details.
+
 ## Acknowledgments
 
-TODO
+Built by [Gibe](https://www.gibe.co.uk).

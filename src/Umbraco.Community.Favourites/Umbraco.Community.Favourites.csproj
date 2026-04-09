@@ -16,8 +16,8 @@
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
     <Authors>Gregory Dove</Authors>
     <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Gregory Dove</Copyright>
-    <PackageProjectUrl>https://github.com/g-dove/Cork</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/g-dove/Cork</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Gibe/Umbraco.Community.Favourites</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Gibe/Umbraco.Community.Favourites</RepositoryUrl>
     <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
