@@ -40,4 +40,4 @@ The solution includes a test site (`Umbraco.Community.Favourites.TestSite`) to m
 
 ## Acknowledgments
 
-Built by [Gibe Digital]((https://gibe.digital/)).
+Built by [Gibe Digital](https://gibe.digital/).
