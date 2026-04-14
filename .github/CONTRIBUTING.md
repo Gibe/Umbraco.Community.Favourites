@@ -5,7 +5,7 @@ Contributions to this package are most welcome!
 There is a test site in the solution to make working with this repository easier.
 It is configured to do an unattended install, check `appSettings.json` for the login details.
 
-Before starting work on a contribution, please create an issue (if one doesn't already exist). This helps avoid duplicated effort, makes sure your contribution is aligned with the project's goals, and gives you a chance to get feedback on your approach before you start coding.
+Before starting work on a contribution, please create an issue [here](https://github.com/Gibe/Umbraco.Community.Favourites/issues) (if one doesn't already exist). This helps avoid duplicated effort, makes sure your contribution is aligned with the project's goals, and gives you a chance to get feedback on your approach before you start coding.
 
 To avoid accidental breaking changes, please do not:
 - Upgrade any NuGet dependencies
