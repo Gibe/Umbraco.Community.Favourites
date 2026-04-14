@@ -9,13 +9,13 @@
   <PropertyGroup>
     <Product>Umbraco.Community.Favourites</Product>
     <PackageId>Umbraco.Community.Favourites</PackageId>
-    <Title>Umbraco.Favourites</Title>
+    <Title>Umbraco Favourites</Title>
     <AssemblyName>Umbraco.Community.Favourites</AssemblyName>
     <RootNamespace>Favourites</RootNamespace>
     <Description>...</Description>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
-    <Authors>Gregory Dove</Authors>
-    <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Gregory Dove</Copyright>
+    <Authors>Gregory Dove, Sam Forrest, Luke Hook</Authors>
+    <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Gibe Digital</Copyright>
     <PackageProjectUrl>https://github.com/Gibe/Umbraco.Community.Favourites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Gibe/Umbraco.Community.Favourites</RepositoryUrl>
     <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
@@ -47,7 +47,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Assets\" />
     <None Include="Assets/logo.png" Pack="true" PackagePath="Assets/" />
   </ItemGroup>
 
