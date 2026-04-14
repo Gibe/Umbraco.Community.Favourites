@@ -8,14 +8,18 @@ Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v15+) th
 
 ## Features
 
-- **Pin from the workspace** — a pin button appears in the document workspace toolbar for any non-trashed content item
-- **Entity actions** — right-click any content item to Favourite or Unfavourite it from the tree or list view
-- **Favourites sidebar** — a sidebar panel in the Content section lists all pinned items with one-click navigation
-- **Conditions** — three built-in extension conditions (`Favourites.Condition.HasFavourites`, `Favourites.Condition.IsFavourited`, `Favourites.Condition.IsNotFavourited`) for use in your own extensions
+- **Pin from the workspace** — a pin button appears in the document workspace toolbar for any non-trashed content item, toggling the item in and out of your favourites
+- **Entity actions** — right-click any non-trashed content item to Favourite or Unfavourite it directly from the tree or list view
+- **Favourites sidebar** — a sidebar panel in the Content section lists all your pinned items with one-click navigation
+- **Sorting** — Sort your favourites by simply dragging to rearrange them in the sidebar
+- **Conditions** — three built-in extension conditions for use when building your own Umbraco extensions:
+  - `Favourites.Condition.HasFavourites` — true when the current user has at least one favourite
+  - `Favourites.Condition.IsFavourited` — true when the current entity is in the user's favourites
+  - `Favourites.Condition.IsNotFavourited` — true when the current entity is not in the user's favourites
 
 ## Requirements
 
-- Umbraco CMS v15+
+- Umbraco CMS v17+
 - .NET 10+
 
 ## Installation
@@ -29,3 +33,17 @@ No further configuration is required. The package registers itself via an Umbrac
 ## Source & Issues
 
 [https://github.com/Gibe/Umbraco.Community.Favourites](https://github.com/Gibe/Umbraco.Community.Favourites)
+
+## Contributing
+
+Contributions to this package are most welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md).
+
+The solution includes a test site (`Umbraco.Community.Favourites.TestSite`) to make local development easier. It is configured for unattended install — check `appsettings.json` for login details.
+
+## Acknowledgments
+
+Built by [Gibe Digital](https://gibe.digital/).
+
+Copyright © 2026 Gibe Digital Ltd.
+
+Licensed under the MIT License.

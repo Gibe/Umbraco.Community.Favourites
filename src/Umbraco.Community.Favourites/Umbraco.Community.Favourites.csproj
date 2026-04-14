@@ -21,7 +21,7 @@
     <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon></PackageIcon>
+    <PackageIcon>Assets/logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,6 +44,11 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Assets\" />
+    <None Include="Assets/logo.png" Pack="true" PackagePath="Assets/" />
   </ItemGroup>
 
 </Project>
