@@ -3,7 +3,7 @@
 Contributions to this package are most welcome! 
 
 There is a test site in the solution to make working with this repository easier.
-It is configured to do an unattended install, check `appSettings.json` for the login details.
+It is configured to do an unattended install, check `appsettings.json` for the login details.
 
 Before starting work on a contribution, please create an issue [here](https://github.com/Gibe/Umbraco.Community.Favourites/issues) (if one doesn't already exist). This helps avoid duplicated effort, makes sure your contribution is aligned with the project's goals, and gives you a chance to get feedback on your approach before you start coding.
 
@@ -11,7 +11,7 @@ To avoid accidental breaking changes, please do not:
 - Upgrade any NuGet dependencies
 - Modify license information
 
-Once an idea or change has been discussed and agreed, to get this change included in a future of the project, please:
+Once an idea or change has been discussed and agreed, to get this change included in a future version of the project, please:
 1. Fork the repository: create your own fork of the repository so you can work independently without affecting the main codebase.
 2. Create a new branch: create a new branch in your fork for your changes. This keeps your work organized and makes it easier to submit a pull request later.
 3. Make your changes: implement your changes in the new branch. Be sure to follow any coding standards or guidelines used in the project.
