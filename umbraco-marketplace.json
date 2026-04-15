@@ -6,7 +6,7 @@
       "Url": "https://www.gibe.digital"
     },
     "Category": "Backoffice Extensions",
-    "Description": "Pin and quickly navigate to your most-used content items in the Umbraco backoffice. Favourites are stored per-user and accessible via a dedicated sidebar panel in the Content section.",
+    "Description": "Pin and quickly navigate to your most-used content items in the Umbraco backoffice.",
     "LicenseTypes": [ "Free" ],
     "IssueTrackerUrl": "https://github.com/Gibe/Umbraco.Community.Favourites/issues",
     "PackageType": "Package",
