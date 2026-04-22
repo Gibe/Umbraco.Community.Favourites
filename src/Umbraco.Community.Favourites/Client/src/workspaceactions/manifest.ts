@@ -14,6 +14,10 @@ export const manifests: Array<UmbExtensionManifest> = [
       {
         alias: "Umb.Condition.EntityIsNotTrashed",
       },
+      {
+        alias: "Umb.Condition.WorkspaceEntityIsNew",
+        match: false
+      }
     ],
   },
 ];
