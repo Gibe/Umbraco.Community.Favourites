@@ -43,7 +43,7 @@ The package supports both published and unpublished content items, and favourite
 ## Package Roadmap
 
 - Support for Media and other entity types
-- Reflection of the users favourites within their user sidebar area
+- Reflection of the users' favourites within their user sidebar area
 - Localisation
 
 ## Contributing
