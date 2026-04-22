@@ -1,15 +1,44 @@
 {
-    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
-    "AuthorDetails": {
-      "Name": "Gibe",
-      "ImageUrl": "https://github.com/Gibe.png",
-      "Url": "https://www.gibe.digital"
-    },
-    "Category": "Backoffice Extensions",
-    "Description": "Pin and quickly navigate to your most-used content items in the Umbraco backoffice.",
-    "LicenseTypes": [ "Free" ],
-    "IssueTrackerUrl": "https://github.com/Gibe/Umbraco.Community.Favourites/issues",
-    "PackageType": "Package",
-    "Tags": ["favourites", "bookmarks", "backoffice", "content", "navigation"],
-    "Title": "Umbraco Favourites"
-  }
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AuthorDetails": {
+    "Name": "Gibe Digital Ltd",
+    "Description": "Based in Bristol, we are a full service digital agency with a strong focus on technical development.",
+    "Url": "https://gibe.digital/",
+    "ImageUrl": "https://github.com/Gibe.png",
+    "Contributors": [],
+    "SyncContributorsFromRepository": true
+  },
+  "Categories": "Editor Tools",
+  "Description": "Pin and quickly navigate to your most-used content items in the Umbraco backoffice.",
+  "DocumentationUrl": "https://github.com/Gibe/Umbraco.Community.Favourites",
+  "LicenseTypes": [ "Free" ],
+  "IssueTrackerUrl": "https://github.com/Gibe/Umbraco.Community.Favourites/issues",
+  "PackageType": "Package",
+  "Screenshots": [
+      {
+        "ImageUrl": "https://github.com/Gibe/Umbraco.Community.Favourites/blob/v17/develop/docs/screenshots/favourites-1.png",
+        "Caption": "New favourite option in the content tree entity action menu"
+      },
+      {
+        "ImageUrl": "https://github.com/Gibe/Umbraco.Community.Favourites/blob/v17/develop/docs/screenshots/favourites-2.png",
+        "Caption": "Reorder your favourites with drag and drop, or remove them if you no longer need them"
+      },
+      {
+        "ImageUrl": "https://github.com/Gibe/Umbraco.Community.Favourites/blob/v17/develop/docs/screenshots/favourites-3.png",
+        "Caption": "Manage your favourites from the entity action menu or the dedicated button on the content node"
+      }
+    ],
+  "Tags": [
+    "favourite",
+    "pin",
+    "pins",
+    "favourites",
+    "bookmark",
+    "bookmarks",
+    "backoffice",
+    "content",
+    "navigation"
+  ],
+  "Title": "Favourites",
+  "VersionDependencyMode": "Default"
+}
