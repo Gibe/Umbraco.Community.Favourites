@@ -38,7 +38,7 @@ Once installed, you'll see a favourites header appear in the Content tree above 
 
 You can rearrange your favourites freely by simply dragging to reorder them in your favourites tree. The sort order will be saved immediately. You can unfavourite items either by clicking the remove button next to a pinned favourite, using the context menu against any node in the content tree or via the button on the workspace area.
 
-Favourites supports both published and unpublished pages and are saved on a per-user basis to a custom database table. If a content node is trashed it will be automatically removed from the favourites list.
+The package supports both published and unpublished content items, and favourites are saved on a per-user basis to a custom database table. If a content item is trashed, it is automatically removed from the favourites list.
 
 ## Package Roadmap
 
