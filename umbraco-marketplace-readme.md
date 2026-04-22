@@ -32,6 +32,20 @@ dotnet add package Umbraco.Community.Favourites
 
 No further configuration is required. The package registers itself via an Umbraco composer and runs its database migrations automatically on startup.
 
+## Documentation
+
+Once installed, you'll see a favourites header appear in the Content tree above the regular content nodes. Simply add any node to your favourites by either clicking the pin on the node workspace (next to the Save and Publish button), or from the new Favourites option in the context menu accessed by clicking the ellipsis that appears when hovering over any node in the Content tree. You will see a confirmation alert that your favourite has been added and it will be immediately reflected in your favourites tree above the content nodes.
+
+You can rearrange your favourites freely by simply dragging to reorder them in your favourites tree. The sort order will be saved immediately. You can unfavourite items either by clicking the remove button next to a pinned favourite, using the context menu against any node in the content tree or via the button on the workspace area.
+
+The package supports both published and unpublished content items, and favourites are saved on a per-user basis to a custom database table. If a content item is trashed, it is automatically removed from the favourites list.
+
+## Package Roadmap
+
+- Support for Media and other entity types
+- Reflection of the users' favourites within their user sidebar area
+- Localisation
+
 ## Contributing
 
 Contributions to this package are most welcome! Please read the [Contributing Guidelines](https://github.com/Gibe/Umbraco.Community.Favourites/blob/v17/develop/.github/CONTRIBUTING.md).
