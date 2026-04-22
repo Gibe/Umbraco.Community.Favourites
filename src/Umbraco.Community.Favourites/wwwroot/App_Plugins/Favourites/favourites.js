@@ -90,7 +90,7 @@ const i = [
       }
     ]
   }
-], a = "Favourites.Condition.HasFavourites", s = "Favourites.Condition.IsFavourited", r = "Favourites.Condition.IsNotFavourited", u = [
+], a = "Favourites.Condition.HasFavourites", s = "Favourites.Condition.IsFavourited", r = "Favourites.Condition.IsNotFavourited", m = [
   {
     name: "Favourites Has Favourites Condition",
     alias: a,
@@ -109,7 +109,7 @@ const i = [
     type: "condition",
     api: () => import("./is-not-favourited.condition-CUC9ARz8.js")
   }
-], m = [
+], u = [
   {
     type: "workspaceAction",
     alias: "Favourites.WorkspaceAction.Pin",
@@ -124,6 +124,10 @@ const i = [
       },
       {
         alias: "Umb.Condition.EntityIsNotTrashed"
+      },
+      {
+        alias: "Umb.Condition.WorkspaceEntityIsNew",
+        match: !1
       }
     ]
   }
@@ -133,8 +137,8 @@ const i = [
   ...o,
   ...n,
   ...e,
-  ...u,
-  ...m
+  ...m,
+  ...u
 ];
 export {
   c as manifests
