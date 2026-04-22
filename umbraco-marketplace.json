@@ -14,13 +14,6 @@
   "LicenseTypes": [ "Free" ],
   "IssueTrackerUrl": "https://github.com/Gibe/Umbraco.Community.Favourites/issues",
   "PackageType": "Package",
-  "Screenshots": [
-    {
-      "ImageUrl": "",
-      "VideoUrl": "",
-      "Caption": ""
-    }
-  ],
   "Tags": [
     "favourite",
     "pins",
