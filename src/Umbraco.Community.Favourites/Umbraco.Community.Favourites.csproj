@@ -49,9 +49,5 @@
   <ItemGroup>
     <None Include="Assets/logo.png" Pack="true" PackagePath="Assets/" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Assets\Screenshots\" />
-  </ItemGroup>
 
 </Project>
