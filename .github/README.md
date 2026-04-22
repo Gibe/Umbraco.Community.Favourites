@@ -8,9 +8,9 @@ Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v17+) th
 
 ## Features
 
-- **Pin from the workspace** — a pin button appears in the document workspace toolbar for any non-trashed content item, toggling the item in and out of your favourites
+- **Favourite from the workspace** — a pin button appears in the document workspace toolbar for any non-trashed content item, toggling the item in and out of your favourites
 - **Entity actions** — right-click any non-trashed content item to Favourite or Unfavourite it directly from the tree or list view
-- **Favourites sidebar** — a sidebar panel in the Content section lists all your pinned items with one-click navigation
+- **Favourites tree** — a sidebar tree in the Content section lists all your pinned items with one-click navigation
 - **Sorting** — Sort your favourites by simply dragging to rearrange them in the sidebar
 - **Conditions** — three built-in extension conditions for use when building your own Umbraco extensions:
   - `Favourites.Condition.HasFavourites` — true when the current user has at least one favourite
@@ -31,6 +31,20 @@ dotnet add package Umbraco.Community.Favourites
 ```
 
 No further configuration is required. The package registers itself via an Umbraco composer and runs its database migrations automatically on startup.
+
+## Documentation
+
+Once installed, you'll see a favourites header appear in the Content tree above the regular content nodes. Simply add any node to your favourites by either clicking the pin on the node workspace (next to the Save and Publish button), or from the new Favourites option in the context menu accessed by clicking the ellipsis that appears when hovering over any node in the Content tree. You will see a confirmation alert that your favourite has been added and it will be immediately reflected in your favourites tree above the content nodes.
+
+You can rearrange your favourites freely by simply dragging to reorder them in your favourites tree. The sort order will be saved immediately. You can unfavourite items either by clicking the remove button next to a pinned favourite, using the context menu against any node in the content tree or via the button on the workspace area.
+
+Favourites supports both published and unpublished pages and are saved on a per-user basis to a custom database table. If a content node is trashed it will be automatically removed from the favourites list.
+
+## Package Roadmap
+
+- Support for Media and other entity types
+- Reflection of the users favourites within their user sidebar area
+- Localisation
 
 ## Contributing
 
