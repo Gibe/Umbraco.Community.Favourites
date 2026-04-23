@@ -8,7 +8,7 @@
     "Contributors": [],
     "SyncContributorsFromRepository": true
   },
-  "Categories": "Editor Tools",
+  "Category": "Editor Tools",
   "Description": "Pin and quickly navigate to your most-used content items in the Umbraco backoffice.",
   "DocumentationUrl": "https://github.com/Gibe/Umbraco.Community.Favourites",
   "LicenseTypes": [ "Free" ],
