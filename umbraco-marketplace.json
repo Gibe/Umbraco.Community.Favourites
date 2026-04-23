@@ -5,8 +5,21 @@
     "Description": "Based in Bristol, we are a full service digital agency with a strong focus on technical development.",
     "Url": "https://gibe.digital/",
     "ImageUrl": "https://github.com/Gibe.png",
-    "Contributors": [],
-    "SyncContributorsFromRepository": true
+    "Contributors": [
+          {
+            "Name": "Sam Forrest",
+            "Url": "https://github.com/SamuelJForrest"
+          },
+          {
+            "Name": "Luke Hook",
+            "Url": "https://github.com/lukehook"
+          },
+          {
+            "Name": "Gregory Dove",
+            "Url": "https://github.com/g-dove"
+          }
+        ],
+    "SyncContributorsFromRepository": false
   },
   "Category": "Editor Tools",
   "Description": "Pin and quickly navigate to your most-used content items in the Umbraco backoffice.",
