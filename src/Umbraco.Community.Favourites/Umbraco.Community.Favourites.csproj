@@ -12,7 +12,7 @@
     <Title>Umbraco Favourites</Title>
     <AssemblyName>Umbraco.Community.Favourites</AssemblyName>
     <RootNamespace>Favourites</RootNamespace>
-    <Description>...</Description>
+    <Description>Favourites is a backoffice extension for Umbraco CMS (v17+) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user and accessible via a dedicated sidebar tree in the Content section.</Description>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
     <Authors>Gregory Dove, Sam Forrest, Luke Hook</Authors>
     <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Gibe Digital</Copyright>
