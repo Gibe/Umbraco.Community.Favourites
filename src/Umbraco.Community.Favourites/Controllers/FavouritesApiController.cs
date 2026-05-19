@@ -14,15 +14,18 @@ public class FavouritesApiController : FavouritesApiControllerBase
     private readonly IFavouritesRepository _favouritesRepository;
     private readonly IBackOfficeSecurityAccessor _backOfficeSecurityAccessor;
     private readonly IContentService _contentService;
+    private readonly IContentTypeService _contentTypeService;
 
     public FavouritesApiController(
         IFavouritesRepository favouritesRepository,
         IBackOfficeSecurityAccessor backOfficeSecurityAccessor,
-        IContentService contentService)
+        IContentService contentService,
+        IContentTypeService contentTypeService)
     {
         _favouritesRepository = favouritesRepository;
         _backOfficeSecurityAccessor = backOfficeSecurityAccessor;
         _contentService = contentService;
+        _contentTypeService = contentTypeService;
     }
 
     private Guid GetCurrentUserKey()
@@ -42,9 +45,15 @@ public class FavouritesApiController : FavouritesApiControllerBase
             .Select(f =>
             {
                 var content = _contentService.GetById(f.NodeKey);
-                return content != null
-                    ? new FavouriteResponse { NodeKey = f.NodeKey, NodeName = content.Name ?? "Untitled", Published = content.Published }
-                    : null;
+                if (content == null) return null;
+                var contentType = _contentTypeService.Get(content.ContentTypeId);
+                return new FavouriteResponse
+                {
+                    NodeKey = f.NodeKey,
+                    NodeName = content.Name ?? "Untitled",
+                    Published = content.Published,
+                    Icon = contentType?.Icon ?? "icon-document"
+                };
             })
             .Where(f => f != null)
             .ToList();
@@ -90,6 +99,7 @@ public class FavouriteResponse
     public Guid NodeKey { get; set; }
     public string NodeName { get; set; } = string.Empty;
     public bool Published { get; set; }
+    public string Icon { get; set; } = "icon-document";
 }
 
 public class SortFavouritesRequest

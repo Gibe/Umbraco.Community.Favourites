@@ -1,6 +1,6 @@
 import { LitElement as h, html as n, css as _, state as d, customElement as p } from "@umbraco-cms/backoffice/external/lit";
-import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
-import { UMB_ACTION_EVENT_CONTEXT as f } from "@umbraco-cms/backoffice/action";
+import { UmbElementMixin as f } from "@umbraco-cms/backoffice/element-api";
+import { UMB_ACTION_EVENT_CONTEXT as m } from "@umbraco-cms/backoffice/action";
 import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backoffice/entity-action";
 import { UMB_NOTIFICATION_CONTEXT as g } from "@umbraco-cms/backoffice/notification";
 import { c } from "./client.gen-Ce7o8kG8.js";
@@ -9,12 +9,12 @@ var b = Object.defineProperty, y = Object.getOwnPropertyDescriptor, a = (e, t, r
     (l = e[u]) && (i = (s ? l(t, r, i) : l(i)) || i);
   return s && i && b(t, r, i), i;
 };
-let o = class extends m(h) {
+let o = class extends f(h) {
   constructor() {
     super(...arguments), this._favourites = [], this._loading = !0, this._dragIndex = null, this._dragOverIndex = null, this._boundRefresh = () => this._loadFavourites();
   }
   connectedCallback() {
-    super.connectedCallback(), this._loadFavourites(), window.addEventListener("favourites-updated", this._boundRefresh), this.consumeContext(f, (e) => {
+    super.connectedCallback(), this._loadFavourites(), window.addEventListener("favourites-updated", this._boundRefresh), this.consumeContext(m, (e) => {
       this._actionEventContext = e, e && e.addEventListener(
         v.TYPE,
         this._boundRefresh
@@ -78,7 +78,7 @@ let o = class extends m(h) {
     });
   }
   render() {
-    return this._loading ? n`` : this._favourites.length === 0 ? n`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>` : n`
+    return this._loading ? n`` : this._favourites.length === 0 ? n`<uui-menu-item label="No favourites pinned" disabled></uui-menu-item>` : (console.log(this._favourites), n`
       ${this._favourites.map(
       (e, t) => n`
           <div
@@ -93,7 +93,7 @@ let o = class extends m(h) {
               @click-label=${() => this._navigateToNode(e.nodeKey)}
               class=${e.published ? "" : "draft"}
             >
-              <uui-icon slot="icon" name="icon-document"></uui-icon>
+              <uui-icon slot="icon" name="${e.icon}"></uui-icon>
               <uui-action-bar slot="actions">
                 <uui-button
                   label="Remove"
@@ -106,7 +106,7 @@ let o = class extends m(h) {
           </div>
         `
     )}
-    `;
+    `);
   }
 };
 o.styles = [
@@ -149,4 +149,4 @@ export {
   o as Pins,
   T as default
 };
-//# sourceMappingURL=pins.element-lzBHntWt.js.map
+//# sourceMappingURL=pins.element-DU4TjCsi.js.map
