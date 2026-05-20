@@ -41,18 +41,31 @@ public class FavouritesApiController : FavouritesApiControllerBase
         var userKey = GetCurrentUserKey();
         var favourites = _favouritesRepository.GetFavourites(userKey);
 
+        var iconCache = new Dictionary<int, string>();
+
         var results = favourites
             .Select(f =>
             {
                 var content = _contentService.GetById(f.NodeKey);
-                if (content == null) return null;
-                var contentType = _contentTypeService.Get(content.ContentTypeId);
+
+                if (content == null)
+                {
+                    return null;
+                }
+
+                if (!iconCache.TryGetValue(content.ContentTypeId, out var icon))
+                {
+                    var contentType = _contentTypeService.Get(content.ContentTypeId);
+                    icon = contentType?.Icon ?? "icon-document";
+                    iconCache[content.ContentTypeId] = icon;
+                }
+
                 return new FavouriteResponse
                 {
                     NodeKey = f.NodeKey,
                     NodeName = content.Name ?? "Untitled",
                     Published = content.Published,
-                    Icon = contentType?.Icon ?? "icon-document"
+                    Icon = icon
                 };
             })
             .Where(f => f != null)
