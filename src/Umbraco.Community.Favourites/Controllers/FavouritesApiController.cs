@@ -55,7 +55,7 @@ public class FavouritesApiController : FavouritesApiControllerBase
                     Icon = contentType?.Icon ?? "icon-document"
                 };
             })
-            .Where(f => f != null)
+            .OfType<FavouriteResponse>()
             .ToList();
 
         return Ok(results);
