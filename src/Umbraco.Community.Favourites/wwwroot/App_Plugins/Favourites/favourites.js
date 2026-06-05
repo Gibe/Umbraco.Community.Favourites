@@ -14,7 +14,7 @@ const i = [
     meta: {
       menu: "Favourites.Menu"
     },
-    element: () => import("./sidebar.element-DUmUeE5K.js"),
+    element: () => import("./sidebar.element-DbFDqiVe.js"),
     weight: 500,
     conditions: [
       {

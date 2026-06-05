@@ -4,10 +4,32 @@ import './pins.element.js';
 
 @customElement('favourites-menu-with-actions')
 export default class FavouritesMenuWithActionsElement extends LitElement {
-  @state() private _isOpen: boolean = true;
+  private sidebarStateKey = 'favouritesOpen';
+  
+  @state() private _isOpen: boolean = this._getSidebarState();
 
   private _toggleAccordion() {
     this._isOpen = !this._isOpen;
+    this._setSidebarState(this._isOpen);
+  }
+
+  private _onKeydown(e: KeyboardEvent) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this._toggleAccordion();
+    }
+  }
+
+  private _setSidebarState(isOpen: boolean) {
+    localStorage.setItem(this.sidebarStateKey, `${isOpen}`);
+  }
+
+  private _getSidebarState() {
+    const state = localStorage.getItem(this.sidebarStateKey);
+
+    if (state === null) return true;
+
+    return state === 'true';
   }
 
   render() {
@@ -36,13 +58,6 @@ export default class FavouritesMenuWithActionsElement extends LitElement {
         ${this._isOpen ? html`<favourites-pins></favourites-pins>` : null}
       </div>
     `;
-  }
-
-  private _onKeydown(e: KeyboardEvent) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      this._toggleAccordion();
-    }
   }
 
   static override styles = css`
