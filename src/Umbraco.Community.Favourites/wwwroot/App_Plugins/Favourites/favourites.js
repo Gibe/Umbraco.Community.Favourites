@@ -14,7 +14,7 @@ const i = [
     meta: {
       menu: "Favourites.Menu"
     },
-    element: () => import("./sidebar.element-OkOUvri2.js"),
+    element: () => import("./sidebar.element-CK58gnmy.js"),
     weight: 500,
     conditions: [
       {
@@ -37,7 +37,7 @@ const i = [
     name: "Favourites Menu Item",
     alias: "Favourites.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-DU4TjCsi.js"),
+    element: () => import("./pins.element-C3oX4eDx.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",
