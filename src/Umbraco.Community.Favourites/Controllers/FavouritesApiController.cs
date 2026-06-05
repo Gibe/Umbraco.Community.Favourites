@@ -46,7 +46,7 @@ public class FavouritesApiController : FavouritesApiControllerBase
                     ? new FavouriteResponse { NodeKey = f.NodeKey, NodeName = content.Name ?? "Untitled", Published = content.Published }
                     : null;
             })
-            .OfType<FavouriteResponse>()
+            .Where(f => f != null)
             .ToList();
 
         return Ok(results);
