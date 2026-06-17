@@ -5,11 +5,11 @@ import { UmbRequestReloadStructureForEntityEvent as v } from "@umbraco-cms/backo
 import { UMB_NOTIFICATION_CONTEXT as g } from "@umbraco-cms/backoffice/notification";
 import { c } from "./client.gen-Ce7o8kG8.js";
 var b = Object.defineProperty, y = Object.getOwnPropertyDescriptor, a = (e, t, r, s) => {
-  for (var i = s > 1 ? void 0 : s ? y(t, r) : t, u = e.length - 1, l; u >= 0; u--)
-    (l = e[u]) && (i = (s ? l(t, r, i) : l(i)) || i);
-  return s && i && b(t, r, i), i;
+  for (var o = s > 1 ? void 0 : s ? y(t, r) : t, u = e.length - 1, l; u >= 0; u--)
+    (l = e[u]) && (o = (s ? l(t, r, o) : l(o)) || o);
+  return s && o && b(t, r, o), o;
 };
-let o = class extends m(h) {
+let i = class extends m(h) {
   constructor() {
     super(...arguments), this._favourites = [], this._loading = !0, this._dragIndex = null, this._dragOverIndex = null, this._boundRefresh = () => this._loadFavourites();
   }
@@ -93,7 +93,7 @@ let o = class extends m(h) {
               @click-label=${() => this._navigateToNode(e.nodeKey)}
               class=${e.published ? "" : "draft"}
             >
-              <uui-icon slot="icon" name="icon-document"></uui-icon>
+              <uui-icon slot="icon" name="${e.icon}"></uui-icon>
               <uui-action-bar slot="actions">
                 <uui-button
                   label="Remove"
@@ -109,7 +109,7 @@ let o = class extends m(h) {
     `;
   }
 };
-o.styles = [
+i.styles = [
   _`
       :host {
         display: contents;
@@ -131,22 +131,22 @@ o.styles = [
 ];
 a([
   d()
-], o.prototype, "_favourites", 2);
+], i.prototype, "_favourites", 2);
 a([
   d()
-], o.prototype, "_loading", 2);
+], i.prototype, "_loading", 2);
 a([
   d()
-], o.prototype, "_dragIndex", 2);
+], i.prototype, "_dragIndex", 2);
 a([
   d()
-], o.prototype, "_dragOverIndex", 2);
-o = a([
+], i.prototype, "_dragOverIndex", 2);
+i = a([
   p("favourites-pins")
-], o);
-const T = o;
+], i);
+const T = i;
 export {
-  o as Pins,
+  i as Pins,
   T as default
 };
-//# sourceMappingURL=pins.element-lzBHntWt.js.map
+//# sourceMappingURL=pins.element-C3oX4eDx.js.map

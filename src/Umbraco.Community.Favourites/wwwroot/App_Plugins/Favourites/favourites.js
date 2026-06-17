@@ -37,7 +37,7 @@ const i = [
     name: "Favourites Menu Item",
     alias: "Favourites.Menu.Item",
     type: "menuItem",
-    element: () => import("./pins.element-lzBHntWt.js"),
+    element: () => import("./pins.element-C3oX4eDx.js"),
     meta: {
       label: "Favourites",
       icon: "icon-pin",

@@ -14,15 +14,18 @@ public class FavouritesApiController : FavouritesApiControllerBase
     private readonly IFavouritesRepository _favouritesRepository;
     private readonly IBackOfficeSecurityAccessor _backOfficeSecurityAccessor;
     private readonly IContentService _contentService;
+    private readonly IContentTypeService _contentTypeService;
 
     public FavouritesApiController(
         IFavouritesRepository favouritesRepository,
         IBackOfficeSecurityAccessor backOfficeSecurityAccessor,
-        IContentService contentService)
+        IContentService contentService,
+        IContentTypeService contentTypeService)
     {
         _favouritesRepository = favouritesRepository;
         _backOfficeSecurityAccessor = backOfficeSecurityAccessor;
         _contentService = contentService;
+        _contentTypeService = contentTypeService;
     }
 
     private Guid GetCurrentUserKey()
@@ -38,13 +41,32 @@ public class FavouritesApiController : FavouritesApiControllerBase
         var userKey = GetCurrentUserKey();
         var favourites = _favouritesRepository.GetFavourites(userKey);
 
+        var iconCache = new Dictionary<int, string>();
+
         var results = favourites
             .Select(f =>
             {
                 var content = _contentService.GetById(f.NodeKey);
-                return content != null
-                    ? new FavouriteResponse { NodeKey = f.NodeKey, NodeName = content.Name ?? "Untitled", Published = content.Published }
-                    : null;
+
+                if (content == null)
+                {
+                    return null;
+                }
+
+                if (!iconCache.TryGetValue(content.ContentTypeId, out var icon))
+                {
+                    var contentType = _contentTypeService.Get(content.ContentTypeId);
+                    icon = contentType?.Icon ?? "icon-document";
+                    iconCache[content.ContentTypeId] = icon;
+                }
+
+                return new FavouriteResponse
+                {
+                    NodeKey = f.NodeKey,
+                    NodeName = content.Name ?? "Untitled",
+                    Published = content.Published,
+                    Icon = icon
+                };
             })
             .Where(f => f != null)
             .ToList();
@@ -90,6 +112,7 @@ public class FavouriteResponse
     public Guid NodeKey { get; set; }
     public string NodeName { get; set; } = string.Empty;
     public bool Published { get; set; }
+    public string Icon { get; set; } = "icon-document";
 }
 
 public class SortFavouritesRequest
