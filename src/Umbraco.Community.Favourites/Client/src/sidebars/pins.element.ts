@@ -15,6 +15,7 @@ interface FavouriteItem {
   nodeKey: string;
   nodeName: string;
   published: boolean;
+  icon: string;
 }
 
 @customElement("favourites-pins")
@@ -168,7 +169,7 @@ export class Pins extends UmbElementMixin(LitElement) {
               @click-label=${() => this._navigateToNode(fav.nodeKey)}
               class=${fav.published ? "" : "draft"}
             >
-              <uui-icon slot="icon" name="icon-document"></uui-icon>
+              <uui-icon slot="icon" name="${fav.icon}"></uui-icon>
               <uui-action-bar slot="actions">
                 <uui-button
                   label="Remove"
