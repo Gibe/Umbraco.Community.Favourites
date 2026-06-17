@@ -6,19 +6,19 @@
     "Url": "https://gibe.digital/",
     "ImageUrl": "https://github.com/Gibe.png",
     "Contributors": [
-          {
-            "Name": "Sam Forrest",
-            "Url": "https://github.com/SamuelJForrest"
-          },
-          {
-            "Name": "Luke Hook",
-            "Url": "https://github.com/lukehook"
-          },
-          {
-            "Name": "Gregory Dove",
-            "Url": "https://github.com/g-dove"
-          }
-        ],
+      {
+        "Name": "Sam Forrest",
+        "Url": "https://github.com/SamuelJForrest"
+      },
+      {
+        "Name": "Luke Hook",
+        "Url": "https://github.com/lukehook"
+      },
+      {
+        "Name": "Gregory Dove",
+        "Url": "https://github.com/g-dove"
+      }
+    ],
     "SyncContributorsFromRepository": false
   },
   "Category": "Editor Tools",
