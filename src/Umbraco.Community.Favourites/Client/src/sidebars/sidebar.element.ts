@@ -21,15 +21,23 @@ export default class FavouritesMenuWithActionsElement extends LitElement {
   }
 
   private _setSidebarState(isOpen: boolean) {
-    localStorage.setItem(this.sidebarStateKey, `${isOpen}`);
+    try {
+      localStorage.setItem(this.sidebarStateKey, `${isOpen}`);
+    } catch (e) {
+      console.error('Failed to set sidebar state:', e);
+    }
   }
 
   private _getSidebarState() {
-    const state = localStorage.getItem(this.sidebarStateKey);
-
-    if (state === null) return true;
-
-    return state === 'true';
+    try {
+      const state = localStorage.getItem(this.sidebarStateKey);
+      
+      if (state === null) return true;
+      
+      return state === 'true';
+    } catch {
+      return true;
+    }
   }
 
   render() {
