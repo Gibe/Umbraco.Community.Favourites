@@ -68,7 +68,7 @@ public class FavouritesApiController : FavouritesApiControllerBase
                     Icon = icon
                 };
             })
-            .Where(f => f != null)
+            .OfType<FavouriteResponse>()
             .ToList();
 
         return Ok(results);
