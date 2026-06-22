@@ -1,7 +1,7 @@
 {
   "id": "Umbraco.Community.Favourites",
   "name": "Umbraco.Community.Favourites",
-  "version": "0.0.0",
+  "version": "17.1.1",
   "allowTelemetry": true,
   "extensions": [
     {
