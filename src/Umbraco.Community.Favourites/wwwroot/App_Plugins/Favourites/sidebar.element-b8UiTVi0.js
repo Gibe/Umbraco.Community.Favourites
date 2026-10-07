@@ -1,5 +1,5 @@
-import { t as e } from "./decorate-CaYbmmmm.js";
-import "./pins.element-DyHAuJQg.js";
+import { t as e } from "./decorate-BJVyhdRd.js";
+import "./pins.element-q2c9bA6x.js";
 import { css as t, customElement as n, html as r, state as i } from "@umbraco-cms/backoffice/external/lit";
 //#region node_modules/@lit/reactive-element/css-tag.js
 var a = globalThis, o = a.ShadowRoot && (a.ShadyCSS === void 0 || a.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, s = Symbol(), c = /* @__PURE__ */ new WeakMap(), l = class {
@@ -127,7 +127,7 @@ var x = class extends HTMLElement {
 	static finalizeStyles(e) {
 		let t = [];
 		if (Array.isArray(e)) {
-			let n = new Set(e.flat(Infinity).reverse());
+			let n = new Set(e.flat(1 / 0).reverse());
 			for (let e of n) t.unshift(f(e));
 		} else e !== void 0 && t.push(f(e));
 		return t;
@@ -302,16 +302,18 @@ var ce = (e, t) => {
 						i.append(e[t], A());
 					}
 				}
-			} else if (i.nodeType === 8) if (i.data === O) c.push({
-				type: 2,
-				index: a
-			});
-			else {
-				let e = -1;
-				for (; (e = i.data.indexOf(D, e + 1)) !== -1;) c.push({
-					type: 7,
+			} else if (i.nodeType === 8) {
+				if (i.data === O) c.push({
+					type: 2,
 					index: a
-				}), e += D.length - 1;
+				});
+				else {
+					let e = -1;
+					for (; (e = i.data.indexOf(D, e + 1)) !== -1;) c.push({
+						type: 7,
+						index: a
+					}), e += D.length - 1;
+				}
 			}
 			a++;
 		}
@@ -523,7 +525,7 @@ var $ = class extends Q {
 	_getSidebarState() {
 		try {
 			let e = localStorage.getItem(this.sidebarStateKey);
-			return e === null ? !0 : e === "true";
+			return e === null || e === "true";
 		} catch {
 			return !0;
 		}
@@ -591,4 +593,4 @@ var ge = $;
 //#endregion
 export { ge as default };
 
-//# sourceMappingURL=sidebar.element-Dka4CeQC.js.map
+//# sourceMappingURL=sidebar.element-b8UiTVi0.js.map

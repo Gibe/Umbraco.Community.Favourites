@@ -3,14 +3,14 @@ var e = [{
 	name: "Favourites Entrypoint",
 	alias: "Favourites.Entrypoint",
 	type: "backofficeEntryPoint",
-	js: () => import("./entrypoint-CNh1FIgm.js")
+	js: () => import("./entrypoint-DTR7qGBw.js")
 }], t = [{
 	name: "Favourites Sidebar App",
 	alias: "Favourites.Sidebar.App",
 	type: "sectionSidebarApp",
 	kind: "menuWithEntityActions",
 	meta: { menu: "Favourites.Menu" },
-	element: () => import("./sidebar.element-Dka4CeQC.js"),
+	element: () => import("./sidebar.element-b8UiTVi0.js"),
 	weight: 500,
 	conditions: [{
 		alias: "Umb.Condition.SectionAlias",
@@ -25,7 +25,7 @@ var e = [{
 	name: "Favourites Menu Item",
 	alias: "Favourites.Menu.Item",
 	type: "menuItem",
-	element: () => import("./pins.element-DyHAuJQg.js"),
+	element: () => import("./pins.element-q2c9bA6x.js"),
 	meta: {
 		label: "Favourites",
 		icon: "icon-pin",
@@ -38,7 +38,7 @@ var e = [{
 	type: "entityAction",
 	kind: "default",
 	weight: 10,
-	api: () => import("./entityaction-DtsAcIq3.js"),
+	api: () => import("./entityaction-Cdy_2Ugi.js"),
 	forEntityTypes: ["document"],
 	meta: {
 		label: "Favourite",
@@ -51,7 +51,7 @@ var e = [{
 	type: "entityAction",
 	kind: "default",
 	weight: 10,
-	api: () => import("./unfavourite-entityaction-DVNi5Ve5.js"),
+	api: () => import("./unfavourite-entityaction-D6TlQ0qX.js"),
 	forEntityTypes: ["document"],
 	meta: {
 		label: "Unfavourite",
@@ -63,26 +63,26 @@ var e = [{
 		name: "Favourites Has Favourites Condition",
 		alias: "Favourites.Condition.HasFavourites",
 		type: "condition",
-		api: () => import("./has-favourites.condition-D29Aa2Ze.js")
+		api: () => import("./has-favourites.condition-D71QjaMC.js")
 	},
 	{
 		name: "Favourites Is Favourited Condition",
 		alias: "Favourites.Condition.IsFavourited",
 		type: "condition",
-		api: () => import("./is-favourited.condition-a-Gdt_2O.js")
+		api: () => import("./is-favourited.condition-DVWvZAI7.js")
 	},
 	{
 		name: "Favourites Is Not Favourited Condition",
 		alias: "Favourites.Condition.IsNotFavourited",
 		type: "condition",
-		api: () => import("./is-not-favourited.condition-2cYdYOc_.js")
+		api: () => import("./is-not-favourited.condition-Co0-nvRd.js")
 	}
 ], o = [{
 	type: "workspaceAction",
 	alias: "Favourites.WorkspaceAction.Pin",
 	name: "Favourites Pin Workspace Action",
-	api: () => import("./workspaceaction.action-DNDf4nVF.js"),
-	element: () => import("./workspaceaction.element-BFaKxIuL.js"),
+	api: () => import("./workspaceaction.action-D_bcnGOK.js"),
+	element: () => import("./workspaceaction.element-C0e3pWDz.js"),
 	weight: 100,
 	conditions: [
 		{

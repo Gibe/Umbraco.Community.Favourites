@@ -1,4 +1,4 @@
-import { t as e } from "./check-is-favourited-CjVFEwkq.js";
+import { t as e } from "./check-is-favourited-H864ZonM.js";
 import { UmbConditionBase as t } from "@umbraco-cms/backoffice/extension-registry";
 import { UMB_ENTITY_CONTEXT as n } from "@umbraco-cms/backoffice/entity";
 //#region src/conditions/is-favourited.condition.ts
@@ -18,4 +18,4 @@ var r = class extends t {
 //#endregion
 export { r as default };
 
-//# sourceMappingURL=is-favourited.condition-a-Gdt_2O.js.map
+//# sourceMappingURL=is-favourited.condition-DVWvZAI7.js.map

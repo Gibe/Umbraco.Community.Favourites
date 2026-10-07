@@ -1,4 +1,4 @@
-import { t as e } from "./client.gen-BqX9kGvI.js";
+import { t as e } from "./client.gen-CjR-VnLg.js";
 import { UmbEntityActionBase as t } from "@umbraco-cms/backoffice/entity-action";
 import { UMB_NOTIFICATION_CONTEXT as n } from "@umbraco-cms/backoffice/notification";
 //#region src/entityactions/entityaction.ts
@@ -30,4 +30,4 @@ var r = class extends t {
 //#endregion
 export { r as default };
 
-//# sourceMappingURL=entityaction-DtsAcIq3.js.map
+//# sourceMappingURL=entityaction-Cdy_2Ugi.js.map

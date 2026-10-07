@@ -1,4 +1,4 @@
-import { t as e } from "./client.gen-BqX9kGvI.js";
+import { t as e } from "./client.gen-CjR-VnLg.js";
 import { UMB_NOTIFICATION_CONTEXT as t } from "@umbraco-cms/backoffice/notification";
 import { UmbWorkspaceActionBase as n } from "@umbraco-cms/backoffice/workspace";
 import { UMB_DOCUMENT_WORKSPACE_CONTEXT as r } from "@umbraco-cms/backoffice/document";
@@ -74,4 +74,4 @@ var i = class extends n {
 //#endregion
 export { i as default };
 
-//# sourceMappingURL=workspaceaction.action-DNDf4nVF.js.map
+//# sourceMappingURL=workspaceaction.action-D_bcnGOK.js.map

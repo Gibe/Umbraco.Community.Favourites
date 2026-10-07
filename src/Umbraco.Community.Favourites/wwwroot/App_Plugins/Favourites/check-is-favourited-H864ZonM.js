@@ -1,4 +1,4 @@
-import { t as e } from "./client.gen-BqX9kGvI.js";
+import { t as e } from "./client.gen-CjR-VnLg.js";
 //#region src/conditions/check-is-favourited.ts
 async function t(t) {
 	if (!t) return !1;
@@ -14,4 +14,4 @@ async function t(t) {
 //#endregion
 export { t };
 
-//# sourceMappingURL=check-is-favourited-CjVFEwkq.js.map
+//# sourceMappingURL=check-is-favourited-H864ZonM.js.map
