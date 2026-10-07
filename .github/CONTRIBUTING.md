@@ -22,7 +22,7 @@ Once an idea or change has been discussed and agreed, to get this change include
 
 ## Branching information
 
-Currently, this package only supports Umbraco version 17. However, in the future we intend to support multiple versions of Umbraco. When that happens, we will use the following branching strategy:
+This package supports multiple versions of Umbraco (currently 17 and 18). We use the following branching strategy:
 - `main` branch: This branch will contain the latest stable release of the package, which will be compatible with the latest version of Umbraco.
 - `v{version}/main` branches: For each supported version of Umbraco, there will be a corresponding branch (e.g., `v17/main`, `v18/main`, etc.) that contains the latest stable release of the package for that specific version of Umbraco. Bug fixes and minor updates for that version will be made in this branch.
 - `v{version}/develop` branches: For each supported version of Umbraco, there will also be a corresponding `develop` branch (e.g., `v17/develop`, `v18/develop`, etc.) where active development for that version takes place. New features and major changes for that version will be made in this branch before being merged into the corresponding `main` branch.
