@@ -69,7 +69,8 @@ var t = ({ onSseError: e, onSseEvent: t, responseTransformer: n, responseValidat
 				break;
 			} catch (t) {
 				if (e?.(t), a !== void 0 && f >= a) break;
-				await d(Math.min(s * 2 ** (f - 1), o ?? 3e4));
+				let n = Math.min(s * 2 ** (f - 1), o ?? 3e4);
+				await d(n);
 			}
 		}
 	}() };
@@ -191,33 +192,35 @@ var t = ({ onSseError: e, onSseEvent: t, responseTransformer: n, responseValidat
 	let i = [];
 	if (r && typeof r == "object") for (let a in r) {
 		let l = r[a];
-		if (l != null) if (Array.isArray(l)) {
-			let n = o({
-				allowReserved: e,
-				explode: !0,
-				name: a,
-				style: "form",
-				value: l,
-				...t
-			});
-			n && i.push(n);
-		} else if (typeof l == "object") {
-			let t = c({
-				allowReserved: e,
-				explode: !0,
-				name: a,
-				style: "deepObject",
-				value: l,
-				...n
-			});
-			t && i.push(t);
-		} else {
-			let t = s({
-				allowReserved: e,
-				name: a,
-				value: l
-			});
-			t && i.push(t);
+		if (l != null) {
+			if (Array.isArray(l)) {
+				let n = o({
+					allowReserved: e,
+					explode: !0,
+					name: a,
+					style: "form",
+					value: l,
+					...t
+				});
+				n && i.push(n);
+			} else if (typeof l == "object") {
+				let t = c({
+					allowReserved: e,
+					explode: !0,
+					name: a,
+					style: "deepObject",
+					value: l,
+					...n
+				});
+				t && i.push(t);
+			} else {
+				let t = s({
+					allowReserved: e,
+					name: a,
+					value: l
+				});
+				t && i.push(t);
+			}
 		}
 	}
 	return i.join("&");
@@ -248,9 +251,7 @@ var t = ({ onSseError: e, onSseEvent: t, responseTransformer: n, responseValidat
 			case "cookie":
 				t.headers.append("Cookie", `${i}=${e}`);
 				break;
-			default:
-				t.headers.set(i, e);
-				break;
+			default: t.headers.set(i, e);
 		}
 	}
 }, g = (e) => d({
@@ -428,4 +429,4 @@ var t = ({ onSseError: e, onSseEvent: t, responseTransformer: n, responseValidat
 //#endregion
 export { w as t };
 
-//# sourceMappingURL=client.gen-BqX9kGvI.js.map
+//# sourceMappingURL=client.gen-CjR-VnLg.js.map

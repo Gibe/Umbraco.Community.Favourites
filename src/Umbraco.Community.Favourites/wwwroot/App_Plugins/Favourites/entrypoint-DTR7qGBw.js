@@ -1,4 +1,4 @@
-import { t as e } from "./client.gen-BqX9kGvI.js";
+import { t as e } from "./client.gen-CjR-VnLg.js";
 import { UMB_AUTH_CONTEXT as t } from "@umbraco-cms/backoffice/auth";
 //#region src/entrypoints/entrypoint.ts
 var n = (n, r) => {
@@ -14,4 +14,4 @@ var n = (n, r) => {
 //#endregion
 export { n as onInit, r as onUnload };
 
-//# sourceMappingURL=entrypoint-CNh1FIgm.js.map
+//# sourceMappingURL=entrypoint-DTR7qGBw.js.map

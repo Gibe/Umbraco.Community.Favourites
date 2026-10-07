@@ -1,5 +1,5 @@
-import { t as e } from "./client.gen-BqX9kGvI.js";
-import { t } from "./decorate-CaYbmmmm.js";
+import { t as e } from "./client.gen-CjR-VnLg.js";
+import { t } from "./decorate-BJVyhdRd.js";
 import { UmbRequestReloadStructureForEntityEvent as n } from "@umbraco-cms/backoffice/entity-action";
 import { UMB_NOTIFICATION_CONTEXT as r } from "@umbraco-cms/backoffice/notification";
 import { LitElement as i, css as a, customElement as o, html as s, state as c } from "@umbraco-cms/backoffice/external/lit";
@@ -130,4 +130,4 @@ var f = d;
 //#endregion
 export { d as Pins, f as default };
 
-//# sourceMappingURL=pins.element-DyHAuJQg.js.map
+//# sourceMappingURL=pins.element-q2c9bA6x.js.map

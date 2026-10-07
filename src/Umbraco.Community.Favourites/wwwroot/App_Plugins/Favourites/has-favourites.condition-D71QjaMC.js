@@ -1,4 +1,4 @@
-import { t as e } from "./client.gen-BqX9kGvI.js";
+import { t as e } from "./client.gen-CjR-VnLg.js";
 import { UmbConditionBase as t } from "@umbraco-cms/backoffice/extension-registry";
 //#region src/conditions/has-favourites.condition.ts
 var n = class extends t {
@@ -22,4 +22,4 @@ var n = class extends t {
 //#endregion
 export { n as default };
 
-//# sourceMappingURL=has-favourites.condition-D29Aa2Ze.js.map
+//# sourceMappingURL=has-favourites.condition-D71QjaMC.js.map

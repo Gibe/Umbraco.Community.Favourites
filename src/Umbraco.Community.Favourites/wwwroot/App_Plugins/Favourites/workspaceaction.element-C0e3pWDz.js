@@ -1,5 +1,5 @@
-import { t as e } from "./client.gen-BqX9kGvI.js";
-import { t } from "./decorate-CaYbmmmm.js";
+import { t as e } from "./client.gen-CjR-VnLg.js";
+import { t } from "./decorate-BJVyhdRd.js";
 import { LitElement as n, css as r, customElement as i, html as a, property as o, state as s } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin as c } from "@umbraco-cms/backoffice/element-api";
 import { UMB_DOCUMENT_WORKSPACE_CONTEXT as l } from "@umbraco-cms/backoffice/document";
@@ -70,4 +70,4 @@ var d = u;
 //#endregion
 export { d as default };
 
-//# sourceMappingURL=workspaceaction.element-BFaKxIuL.js.map
+//# sourceMappingURL=workspaceaction.element-C0e3pWDz.js.map
