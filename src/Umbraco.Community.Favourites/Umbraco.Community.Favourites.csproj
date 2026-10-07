@@ -12,7 +12,7 @@
     <Title>Umbraco Favourites</Title>
     <AssemblyName>Umbraco.Community.Favourites</AssemblyName>
     <RootNamespace>Favourites</RootNamespace>
-    <Description>Favourites is a backoffice extension for Umbraco CMS (v17+) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user and accessible via a dedicated sidebar tree in the Content section.</Description>
+    <Description>Favourites is a backoffice extension for Umbraco CMS (v18) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user and accessible via a dedicated sidebar tree in the Content section.</Description>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
     <Authors>Gregory Dove, Sam Forrest, Luke Hook</Authors>
     <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Gibe Digital</Copyright>
@@ -25,10 +25,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[17.0.0,18.0.0)" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="[17.0.0,18.0.0)" />
-    <PackageReference Include="Umbraco.Cms.Api.Common" Version="[17.0.0,18.0.0)" />
-    <PackageReference Include="Umbraco.Cms.Api.Management" Version="[17.0.0,18.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[18.0.0,19.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="[18.0.0,19.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Api.Common" Version="[18.0.0,19.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Api.Management" Version="[18.0.0,19.0.0)" />
   </ItemGroup>
   
   <ItemGroup>

@@ -2,9 +2,9 @@
 
 [![Downloads](https://img.shields.io/nuget/dt/Umbraco.Community.Favourites?color=cc9900)](https://www.nuget.org/packages/Umbraco.Community.Favourites/)
 [![NuGet](https://img.shields.io/nuget/vpre/Umbraco.Community.Favourites?color=0273B3)](https://www.nuget.org/packages/Umbraco.Community.Favourites)
-[![GitHub license](https://img.shields.io/github/license/Gibe/Umbraco.Community.Favourites?color=8AB803)](https://github.com/Gibe/Umbraco.Community.Favourites/blob/v17/develop/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Gibe/Umbraco.Community.Favourites?color=8AB803)](https://github.com/Gibe/Umbraco.Community.Favourites/blob/v18/develop/LICENSE)
 
-Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v17+) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user in the database and accessible via a dedicated sidebar panel in the Content section.
+Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v18) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user in the database and accessible via a dedicated sidebar panel in the Content section.
 
 ## Features
 
@@ -19,7 +19,7 @@ Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v17+) th
 
 ## Requirements
 
-- Umbraco CMS v17+
+- Umbraco CMS v18.x (not compatible with v17 or earlier)
 - .NET 10+
 
 ## Installation
@@ -48,7 +48,7 @@ The package supports both published and unpublished content items, and favourite
 
 ## Contributing
 
-Contributions to this package are most welcome! Please read the [Contributing Guidelines](https://github.com/Gibe/Umbraco.Community.Favourites/blob/v17/develop/.github/CONTRIBUTING.md).
+Contributions to this package are most welcome! Please read the [Contributing Guidelines](https://github.com/Gibe/Umbraco.Community.Favourites/blob/v18/develop/.github/CONTRIBUTING.md).
 
 ## Acknowledgments
 
