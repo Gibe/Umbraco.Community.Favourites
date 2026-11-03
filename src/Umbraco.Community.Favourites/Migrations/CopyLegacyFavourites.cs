@@ -22,8 +22,11 @@ public class CopyLegacyFavourites : AsyncMigrationBase
             return;
         }
 
+        // The legacy table may predate the sortOrder column, so fall back to 0 when it is missing
+        var sortOrderSource = ColumnExists(AddFavouritesTable.LegacyTableName, "sortOrder") ? "sortOrder" : "0";
+
         await Database.ExecuteAsync(
             $"INSERT INTO {Favourite.TableName} (userKey, nodeKey, sortOrder) " +
-            $"SELECT userKey, nodeKey, sortOrder FROM {AddFavouritesTable.LegacyTableName}");
+            $"SELECT userKey, nodeKey, {sortOrderSource} FROM {AddFavouritesTable.LegacyTableName}");
     }
 }
