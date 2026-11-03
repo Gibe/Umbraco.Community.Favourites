@@ -40,6 +40,12 @@ You can rearrange your favourites freely by simply dragging to reorder them in y
 
 The package supports both published and unpublished content items, and favourites are saved on a per-user basis to a custom database table. If a content item is trashed, it is automatically removed from the favourites list.
 
+### Permissions
+
+Access to favourites is controlled by a single **Use Favourites** permission, found under **Users > User Groups > Default Permissions**. Users only see and can use favourites if at least one of their groups has it ticked. The API enforces the same permission, so it can't be bypassed by calling it directly.
+
+It is on by default: the package grants it to all existing user groups when installed or upgraded, and to any user group you create afterwards. Untick it for any group that shouldn't have favourites. Favourites already saved by a user are kept, so re-granting the permission restores them.
+
 ## Package Roadmap
 
 - Support for Media and other entity types

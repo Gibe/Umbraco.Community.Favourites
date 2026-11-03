@@ -18,6 +18,9 @@ export const manifests: Array<UmbExtensionManifest> = [
       {
         alias: "Favourites.Condition.IsNotFavourited",
       },
+      {
+        alias: "Favourites.Condition.HasPermission",
+      },
     ],
   },
   {
@@ -38,6 +41,9 @@ export const manifests: Array<UmbExtensionManifest> = [
       },
       {
         alias: "Favourites.Condition.IsFavourited",
+      },
+      {
+        alias: "Favourites.Condition.HasPermission",
       },
     ],
   },

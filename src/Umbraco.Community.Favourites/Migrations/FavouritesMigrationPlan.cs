@@ -10,5 +10,6 @@ public class FavouritesMigrationPlan : PackageMigrationPlan
     {
         To<AddFavouritesTable>(nameof(AddFavouritesTable));
         To<AddSortOrderToFavourites>(nameof(AddSortOrderToFavourites));
+        To<AddUsePermissionToUserGroups>(nameof(AddUsePermissionToUserGroups));
     }
 }
