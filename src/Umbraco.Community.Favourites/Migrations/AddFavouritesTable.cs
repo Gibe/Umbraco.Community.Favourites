@@ -5,13 +5,28 @@ namespace Favourites.Migrations;
 
 public class AddFavouritesTable : AsyncMigrationBase
 {
+    // Table name used by the package before it was renamed to Umbraco.Community.Favourites
+    internal const string LegacyTableName = "umbracoFavourite";
+
     public AddFavouritesTable(IMigrationContext context) : base(context) { }
 
-    protected override async Task MigrateAsync()
+    protected override Task MigrateAsync()
     {
-        if (!TableExists(Favourite.TableName))
+        if (TableExists(Favourite.TableName))
+        {
+            return Task.CompletedTask;
+        }
+
+        // Sites upgrading from the old package already hold their favourites in the legacy table, so keep them
+        if (TableExists(LegacyTableName))
+        {
+            Rename.Table(LegacyTableName).To(Favourite.TableName).Do();
+        }
+        else
         {
             Create.Table<Favourite>().Do();
         }
+
+        return Task.CompletedTask;
     }
 }
