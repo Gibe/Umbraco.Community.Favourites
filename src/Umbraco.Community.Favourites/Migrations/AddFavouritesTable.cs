@@ -5,7 +5,6 @@ namespace Favourites.Migrations;
 
 public class AddFavouritesTable : AsyncMigrationBase
 {
-    // Table name used by the package before it was renamed to Umbraco.Community.Favourites
     internal const string LegacyTableName = "umbracoFavourite";
 
     public AddFavouritesTable(IMigrationContext context) : base(context) { }
