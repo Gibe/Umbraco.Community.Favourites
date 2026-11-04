@@ -118,7 +118,7 @@ var t = [{
 	forEntityTypes: ["document"],
 	meta: {
 		verbs: [e],
-		label: "Use Favourites",
+		label: "Favourites",
 		description: "Allow the user to add, remove and view their favourites"
 	}
 }], l = [

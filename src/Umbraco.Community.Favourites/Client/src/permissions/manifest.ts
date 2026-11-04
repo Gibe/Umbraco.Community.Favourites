@@ -8,7 +8,7 @@ export const manifests: Array<UmbExtensionManifest> = [
     forEntityTypes: ["document"],
     meta: {
       verbs: [FAVOURITES_USE_PERMISSION_VERB],
-      label: "Use Favourites",
+      label: "Favourites",
       description: "Allow the user to add, remove and view their favourites",
     },
   },
