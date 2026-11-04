@@ -1,5 +1,5 @@
 import { t as e } from "./decorate-BJVyhdRd.js";
-import "./pins.element-q2c9bA6x.js";
+import "./pins.element-UdhNu5HZ.js";
 import { css as t, customElement as n, html as r, state as i } from "@umbraco-cms/backoffice/external/lit";
 //#region node_modules/@lit/reactive-element/css-tag.js
 var a = globalThis, o = a.ShadowRoot && (a.ShadyCSS === void 0 || a.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, s = Symbol(), c = /* @__PURE__ */ new WeakMap(), l = class {
@@ -593,4 +593,4 @@ var ge = $;
 //#endregion
 export { ge as default };
 
-//# sourceMappingURL=sidebar.element-b8UiTVi0.js.map
+//# sourceMappingURL=sidebar.element-BEdnRc6P.js.map
