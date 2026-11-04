@@ -90,7 +90,7 @@ var d = class extends l(i) {
               @click-label=${() => this._navigateToNode(e.nodeKey)}
               class=${e.published ? "" : "draft"}
             >
-              <uui-icon slot="icon" name="${e.icon}"></uui-icon>
+              <umb-icon slot="icon" name="${e.icon}"></umb-icon>
               <uui-action-bar slot="actions">
                 <uui-button
                   label="Remove"
@@ -130,4 +130,4 @@ var f = d;
 //#endregion
 export { d as Pins, f as default };
 
-//# sourceMappingURL=pins.element-q2c9bA6x.js.map
+//# sourceMappingURL=pins.element-UdhNu5HZ.js.map
