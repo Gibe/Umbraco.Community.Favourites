@@ -17,6 +17,9 @@ export const manifests: Array<UmbExtensionManifest> = [
       {
         alias: "Umb.Condition.WorkspaceEntityIsNew",
         match: false
+      },
+      {
+        alias: "Favourites.Condition.HasPermission",
       }
     ],
   },

@@ -7,16 +7,24 @@ public class AddSortOrderToFavourites : AsyncMigrationBase
 {
     public AddSortOrderToFavourites(IMigrationContext context) : base(context) { }
 
-    protected override async Task MigrateAsync()
+    protected override Task MigrateAsync()
     {
         if (!TableExists(Favourite.TableName))
         {
             throw new Exception("The favourites table does not exist. Please run the initial migration to create the table before running this migration.");
         }
-        var tableName = Favourite.TableName;
-        if (!ColumnExists(tableName, "sortOrder"))
+
+        if (!ColumnExists(Favourite.TableName, "sortOrder"))
         {
-            await Database.ExecuteAsync($"ALTER TABLE {tableName} ADD COLUMN sortOrder INTEGER NOT NULL DEFAULT 0");
+            // The builder emits the right syntax for each database (raw "ADD COLUMN" is SQLite-only)
+            Create.Column("sortOrder")
+                .OnTable(Favourite.TableName)
+                .AsInt32()
+                .NotNullable()
+                .WithDefaultValue(0)
+                .Do();
         }
+
+        return Task.CompletedTask;
     }
 }

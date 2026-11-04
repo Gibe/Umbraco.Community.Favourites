@@ -1,10 +1,11 @@
+import { t as e } from "./constants-DoKlF_Gs.js";
 //#region src/entrypoints/manifest.ts
-var e = [{
+var t = [{
 	name: "Favourites Entrypoint",
 	alias: "Favourites.Entrypoint",
 	type: "backofficeEntryPoint",
 	js: () => import("./entrypoint-DTR7qGBw.js")
-}], t = [{
+}], n = [{
 	name: "Favourites Sidebar App",
 	alias: "Favourites.Sidebar.App",
 	type: "sectionSidebarApp",
@@ -15,13 +16,13 @@ var e = [{
 	conditions: [{
 		alias: "Umb.Condition.SectionAlias",
 		match: "Umb.Section.Content"
-	}]
-}], n = [{
+	}, { alias: "Favourites.Condition.HasPermission" }]
+}], r = [{
 	name: "Favourites Sidebar Menu",
 	alias: "Favourites.Menu",
 	type: "menu",
 	meta: { label: "Favourites" }
-}], r = [{
+}], i = [{
 	name: "Favourites Menu Item",
 	alias: "Favourites.Menu.Item",
 	type: "menuItem",
@@ -32,7 +33,7 @@ var e = [{
 		entityType: "",
 		menus: ["Favourites.Menu"]
 	}
-}], i = [{
+}], a = [{
 	name: "Favourites Favourite Entity Action",
 	alias: "Favourites.EntityAction.Favourite",
 	type: "entityAction",
@@ -44,7 +45,11 @@ var e = [{
 		label: "Favourite",
 		icon: "icon-pushpin"
 	},
-	conditions: [{ alias: "Umb.Condition.EntityIsNotTrashed" }, { alias: "Favourites.Condition.IsNotFavourited" }]
+	conditions: [
+		{ alias: "Umb.Condition.EntityIsNotTrashed" },
+		{ alias: "Favourites.Condition.IsNotFavourited" },
+		{ alias: "Favourites.Condition.HasPermission" }
+	]
 }, {
 	name: "Favourites Unfavourite Entity Action",
 	alias: "Favourites.EntityAction.Unfavourite",
@@ -57,8 +62,12 @@ var e = [{
 		label: "Unfavourite",
 		icon: "icon-pushpin"
 	},
-	conditions: [{ alias: "Umb.Condition.EntityIsNotTrashed" }, { alias: "Favourites.Condition.IsFavourited" }]
-}], a = [
+	conditions: [
+		{ alias: "Umb.Condition.EntityIsNotTrashed" },
+		{ alias: "Favourites.Condition.IsFavourited" },
+		{ alias: "Favourites.Condition.HasPermission" }
+	]
+}], o = [
 	{
 		name: "Favourites Has Favourites Condition",
 		alias: "Favourites.Condition.HasFavourites",
@@ -76,8 +85,14 @@ var e = [{
 		alias: "Favourites.Condition.IsNotFavourited",
 		type: "condition",
 		api: () => import("./is-not-favourited.condition-Co0-nvRd.js")
+	},
+	{
+		name: "Favourites Has Permission Condition",
+		alias: "Favourites.Condition.HasPermission",
+		type: "condition",
+		api: () => import("./has-permission.condition-6Rd-XAAj.js")
 	}
-], o = [{
+], s = [{
 	type: "workspaceAction",
 	alias: "Favourites.WorkspaceAction.Pin",
 	name: "Favourites Pin Workspace Action",
@@ -93,18 +108,30 @@ var e = [{
 		{
 			alias: "Umb.Condition.WorkspaceEntityIsNew",
 			match: !1
-		}
+		},
+		{ alias: "Favourites.Condition.HasPermission" }
 	]
-}], s = [
-	...e,
+}], c = [{
+	type: "entityUserPermission",
+	alias: "Favourites.EntityUserPermission.Use",
+	name: "Favourites Use Permission",
+	forEntityTypes: ["document"],
+	meta: {
+		verbs: [e],
+		label: "Favourites",
+		description: "Allow the user to add, remove and view their favourites"
+	}
+}], l = [
 	...t,
 	...n,
 	...r,
 	...i,
 	...a,
-	...o
+	...o,
+	...s,
+	...c
 ];
 //#endregion
-export { s as manifests };
+export { l as manifests };
 
 //# sourceMappingURL=favourites.js.map
