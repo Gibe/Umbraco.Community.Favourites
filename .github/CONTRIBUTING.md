@@ -5,6 +5,13 @@ Contributions to this package are most welcome!
 There is a test site in the solution to make working with this repository easier.
 It is configured to do an unattended install, check `appsettings.json` for the login details.
 
+By default the test site uses a SQLite database. If you would rather use SQL Server, don't change `appsettings.Development.json` (it is committed). Instead, store your own connection string in [user secrets](https://learn.microsoft.com/aspnet/core/security/app-secrets), which the test site is already set up to read:
+
+```bash
+dotnet user-secrets set "ConnectionStrings:umbracoDbDSN" "Server=localhost;Database=UmbracoCommunityFavourites;Integrated Security=true;TrustServerCertificate=true" --project src/Umbraco.Community.Favourites.TestSite
+dotnet user-secrets set "ConnectionStrings:umbracoDbDSN_ProviderName" "Microsoft.Data.SqlClient" --project src/Umbraco.Community.Favourites.TestSite
+```
+
 Before starting work on a contribution, please create an issue [here](https://github.com/Gibe/Umbraco.Community.Favourites/issues) (if one doesn't already exist). This helps avoid duplicated effort, makes sure your contribution is aligned with the project's goals, and gives you a chance to get feedback on your approach before you start coding.
 
 To avoid accidental breaking changes, please do not:

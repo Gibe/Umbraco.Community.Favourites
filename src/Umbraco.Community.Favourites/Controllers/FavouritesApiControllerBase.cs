@@ -9,6 +9,7 @@ namespace Favourites.Controllers
     [ApiController]
     [BackOfficeRoute("favourites/api/v{version:apiVersion}")]
     [Authorize(Policy = AuthorizationPolicies.SectionAccessContent)]
+    [Authorize(Policy = Constants.PolicyName)]
     [MapToApi(Constants.ApiName)]
     public class FavouritesApiControllerBase : ControllerBase
     {

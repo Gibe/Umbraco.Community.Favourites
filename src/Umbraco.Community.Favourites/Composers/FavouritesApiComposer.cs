@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
+using Favourites.Authorization;
 using Favourites.Repositories;
 using Favourites.NotificationHandlers;
 using Umbraco.Cms.Api.Common.OpenApi;
@@ -16,7 +18,12 @@ namespace Favourites.Composers
         {
             builder.Services.AddScoped<IFavouritesRepository, FavouritesRepository>();
 
+            builder.Services.AddSingleton<IAuthorizationHandler, FavouritesPermissionHandler>();
+            builder.Services.AddAuthorizationBuilder()
+                .AddPolicy(Constants.PolicyName, policy => policy.Requirements.Add(new FavouritesPermissionRequirement()));
+
             builder.AddNotificationHandler<ContentMovedToRecycleBinNotification, ContentMovedToRecycleBinNotificationHandler>();
+            builder.AddNotificationHandler<UserGroupSavingNotification, UserGroupSavingNotificationHandler>();
 
             // Related documentation:
             // https://docs.umbraco.com/umbraco-cms/tutorials/creating-a-backoffice-api

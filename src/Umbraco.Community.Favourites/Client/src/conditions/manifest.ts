@@ -2,6 +2,7 @@ import {
   HAS_FAVOURITES_CONDITION_ALIAS,
   IS_FAVOURITED_CONDITION_ALIAS,
   IS_NOT_FAVOURITED_CONDITION_ALIAS,
+  HAS_PERMISSION_CONDITION_ALIAS,
 } from "./constants.js";
 
 export const manifests: Array<UmbExtensionManifest> = [
@@ -22,5 +23,11 @@ export const manifests: Array<UmbExtensionManifest> = [
     alias: IS_NOT_FAVOURITED_CONDITION_ALIAS,
     type: "condition",
     api: () => import("./is-not-favourited.condition.js"),
+  },
+  {
+    name: "Favourites Has Permission Condition",
+    alias: HAS_PERMISSION_CONDITION_ALIAS,
+    type: "condition",
+    api: () => import("./has-permission.condition.js"),
   },
 ];
