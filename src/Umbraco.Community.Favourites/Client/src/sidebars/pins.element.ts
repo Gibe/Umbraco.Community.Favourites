@@ -169,7 +169,7 @@ export class Pins extends UmbElementMixin(LitElement) {
               @click-label=${() => this._navigateToNode(fav.nodeKey)}
               class=${fav.published ? "" : "draft"}
             >
-              <uui-icon slot="icon" name="${fav.icon}"></uui-icon>
+              <umb-icon slot="icon" name="${fav.icon}"></umb-icon>
               <uui-action-bar slot="actions">
                 <uui-button
                   label="Remove"
