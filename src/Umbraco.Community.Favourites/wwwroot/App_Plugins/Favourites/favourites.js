@@ -11,7 +11,7 @@ var t = [{
 	type: "sectionSidebarApp",
 	kind: "menuWithEntityActions",
 	meta: { menu: "Favourites.Menu" },
-	element: () => import("./sidebar.element-b8UiTVi0.js"),
+	element: () => import("./sidebar.element-BEdnRc6P.js"),
 	weight: 500,
 	conditions: [{
 		alias: "Umb.Condition.SectionAlias",
@@ -26,7 +26,7 @@ var t = [{
 	name: "Favourites Menu Item",
 	alias: "Favourites.Menu.Item",
 	type: "menuItem",
-	element: () => import("./pins.element-q2c9bA6x.js"),
+	element: () => import("./pins.element-UdhNu5HZ.js"),
 	meta: {
 		label: "Favourites",
 		icon: "icon-pin",
