@@ -9,6 +9,8 @@ using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Api.Management.OpenApi;
 using Umbraco.Cms.Api.Common.OpenApi;
 using Microsoft.OpenApi;
+using Microsoft.AspNetCore.Authorization;
+using Favourites.Authorization;
 using Favourites.Repositories;
 using Favourites.NotificationHandlers;
 using Umbraco.Cms.Core.Notifications;
@@ -21,7 +23,12 @@ namespace Favourites.Composers
         {
             builder.Services.AddScoped<IFavouritesRepository, FavouritesRepository>();
 
+            builder.Services.AddSingleton<IAuthorizationHandler, FavouritesPermissionHandler>();
+            builder.Services.AddAuthorizationBuilder()
+                .AddPolicy(Constants.PolicyName, policy => policy.Requirements.Add(new FavouritesPermissionRequirement()));
+
             builder.AddNotificationHandler<ContentMovedToRecycleBinNotification, ContentMovedToRecycleBinNotificationHandler>();
+            builder.AddNotificationHandler<UserGroupSavingNotification, UserGroupSavingNotificationHandler>();
 
             builder.Services.AddSingleton<IOperationIdHandler, CustomOperationHandler>();
 

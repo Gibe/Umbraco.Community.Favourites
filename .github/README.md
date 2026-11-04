@@ -4,7 +4,7 @@
 [![NuGet](https://img.shields.io/nuget/vpre/Umbraco.Community.Favourites?color=0273B3)](https://www.nuget.org/packages/Umbraco.Community.Favourites)
 [![GitHub license](https://img.shields.io/github/license/Gibe/Umbraco.Community.Favourites?color=8AB803)](../LICENSE)
 
-Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v17+) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user in the database and accessible via a dedicated sidebar panel in the Content section.
+Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v17) that lets editors pin and quickly navigate to their most-used content items. Favourites are stored per-user in the database and accessible via a dedicated sidebar panel in the Content section.
 
 ## Features
 
@@ -19,7 +19,7 @@ Umbraco.Community.Favourites is a backoffice extension for Umbraco CMS (v17+) th
 
 ## Requirements
 
-- Umbraco CMS v17+
+- Umbraco CMS v17.x (not compatible with v18 or later)
 - .NET 10+
 
 ## Installation
@@ -40,6 +40,12 @@ You can rearrange your favourites freely by simply dragging to reorder them in y
 
 The package supports both published and unpublished content items, and favourites are saved on a per-user basis to a custom database table. If a content item is trashed, it is automatically removed from the favourites list.
 
+### Permissions
+
+Access to favourites is controlled by a single **Favourites** permission, found under **Users > User Groups > Default Permissions**. Users only see and can use favourites if at least one of their groups has it ticked. The API enforces the same permission, so it can't be bypassed by calling it directly.
+
+It is on by default: the package grants it to all existing user groups when installed or upgraded, and to any user group you create afterwards. Untick it for any group that shouldn't have favourites. Favourites already saved by a user are kept, so re-granting the permission restores them.
+
 ## Package Roadmap
 
 - Support for Media and other entity types
@@ -50,7 +56,7 @@ The package supports both published and unpublished content items, and favourite
 
 Contributions to this package are most welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md).
 
-The solution includes a test site (`Umbraco.Community.Favourites.TestSite`) to make local development easier. It is configured for unattended install — check `appsettings.json` for login details.
+The solution includes a test site (`Umbraco.Community.Favourites.TestSite`) to make local development easier. It is configured for unattended install — check `appsettings.json` for login details. It uses SQLite by default; to use SQL Server locally without committing a connection string, see the [Contributing Guidelines](CONTRIBUTING.md) for how to use user secrets.
 
 ## Acknowledgments
 
